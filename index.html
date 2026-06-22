@@ -15,13 +15,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
+        
         <header class="navbar">
             <div class="logo">Hikari <span>Aufa</span> Portfolio</div>
             <nav>
-                <a href="">Profile</a>
-                <a href="">Experience</a>
-                <a href="">Project</a>
-                <a href="">Skill</a>
+                <a href="#biodata">About</a>
+                <a href="#experience">Experience</a>
+                <a href="">Projects</a>
+                <a href="">Skills</a>
             </nav>
         </header>
         <main>
@@ -35,15 +36,134 @@
                         <button class="contact-btn">Contact Me</button>
                     </div>
                 </div>
-                <div class="hero-gif">
-                    <img src="img/gif.gif" alt="animation">
+                <div class="hero-profile">
+                    <div class="profile-frame">
+                        <img src="img/profile.png" alt="profile">
+                    </div>
                 </div>
             </section>
-            <section id="biodata"></section>
-            <section id="experience"></section>
-            <section id="projects"></section>
+            <section id="biodata">
+                <div class="biodata-image">
+                    <img src="img/gif.gif" alt="about image">
+                </div>
+
+                <div class="biodata-content">
+                    <h3>ABOUT ME</h3>
+                    <h2>Hikari Aufa Yafi</h2>
+
+                    <p>
+                        Informatics Engineering student 
+                        with strong passion in game development and programming.
+                    </p>
+
+                    <p>
+                        Skilled in Unity, gameplay programming, and AI systems,
+                        with experience building game mechanics and interactive gameplay.
+                    </p>
+
+                    <div class="biodata-info">
+                        <div class="info-item">
+                            <img src="img/locarion blue.png" alt="location icon">
+                            <div class="info-text">
+                                <h4>Location</h4>
+                                <span>Indonesia</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <img src="img/education blue.png" alt="education icon">
+                            <div class="info-text">
+                                <h4>Education</h4>
+                                <span>Dian Nuswantoro University  GPA 3.67</span>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                        <img src="img/gear blue.png" alt="role icon">
+                        <div class="info-text">
+                            <h4>Role</h4>
+                            <span>Unity Gameplay Programmer</span>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            <section id="experience">
+            <h2 class="section-title">EXPERIENCE</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Feb 2024 - Jun 2024</div>
+
+                        <div class="timeline-content">
+                            <h3>Game Development Trainee</h3>
+                            <h4>Celerates</h4>
+                            <p>
+                                Learned game design fundamentals, Unity & C# programming,
+                                asset integration, UI/UX, sound design, and built a final game project.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Sep 2024 - Dec 2024</div>
+
+                        <div class="timeline-content">
+                            <h3>Gameplay Programmer Intern</h3>
+                            <h4>Intsys Lab - Udinus</h4>
+                            <p>
+                                Developed movement, combat, buff systems, FSM enemy AI,
+                                leaderboard systems, and VFX/audio integration.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mar 2025 – Apr 2025</div>
+
+                        <div class="timeline-content">
+                            <h3>AI Game Programming Course</h3>
+                            <h4>Agate</h4>
+                            <p>
+                                Focused on gameplay systems and enemy AI development using FSM. 
+                                Worked on score systems, scene management, Aseprite asset editing,
+                                and gameplay polish with audio/VFX.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Jul 2025 – Dec 2025</div>
+
+                        <div class="timeline-content">
+                            <h3>Unity Game Developer Trainee</h3>
+                            <h4>Google Play × Unity Program</h4>
+                            <p>
+                                Designed and developed game projects, managed assets and workflows,
+                                integrated animations/scripts/lighting, created enemy NPC AI, 
+                                built particle VFX, and ported desktop builds to Android.
+                            </p>
+                        </div>
+                    </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Jan 2026 – Apr 2026</div>
+
+                            <div class="timeline-content">
+                                <h3>Intern Nouverior</h3>
+                                <h4>Nouverior</h4>
+                                <p>
+                                Contributed to character movement systems, skill selection mechanics, enemy AI behaviors, and audio integration using FMOD for synchronized gameplay sound effects.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <section id="projects">
+                <h2 class="section-title">PROJECTS</h2>
+                <div id="project-grid" class="project-grid"></div>
+                
+            </section>
             <section id="skills"></section>
         </main>
         <footer></footer>
+        <script src="script/script.js"></script>
     </body>
 </html>
