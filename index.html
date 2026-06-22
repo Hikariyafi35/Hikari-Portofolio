@@ -32,8 +32,8 @@
                     <h2 class="Name-section-hero">Hikari Aufa</h2>
                     <p>Unity Gameplay Programmer, creating engaging gameplay and interacting systems.</p>
                     <div class="hero-buttons">
-                        <button class="viewProject-btn">View Projects</button>
-                        <button class="contact-btn">Contact Me</button>
+                        <button class="viewProject-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+                        <a href="mailto:hikari32yafi@gmail.com" class="contact-btn">Contact Me</a>
                     </div>
                 </div>
                 <div class="hero-profile">
@@ -159,11 +159,122 @@
             <section id="projects">
                 <h2 class="section-title">PROJECTS</h2>
                 <div id="project-grid" class="project-grid"></div>
-                
             </section>
-            <section id="skills"></section>
+            <section id="skills">
+                <h2 class="section-title">SKILLS</h2>
+
+                    <div class="skills-grid">
+                        <!-- Programming -->
+                        <div class="skill-card">
+                            <div class="skill-header">
+                            <img src="img/code.png" alt="Programming">
+                            <h3>Programming</h3>
+                            </div>
+                            <div class="skill-tags">
+                            <span>C#</span>
+                            <span>JavaScript</span>
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>Python</span>
+                            </div>
+                        </div>
+
+                        <!-- Game Development -->
+                        <div class="skill-card">
+                            <div class="skill-header">
+                            <img src="img/game2.png" alt="Game Development">
+                            <h3>Game Development</h3>
+                            </div>
+                            <div class="skill-tags">
+                            <span>Unity</span>
+                            <span>Gameplay Programming</span>
+                            <span>Enemy AI (FSM)</span>
+                            <span>Rigidbody Physics</span>
+                            <span>Scene Management</span>
+                            <span>Animation System</span>
+                            <span>Scriptable Object</span>
+                            <span>Audio Integration</span>
+                            <span>Game Balancing</span>
+                            </div>
+                        </div>
+
+                        <!-- Tools -->
+                        <div class="skill-card">
+                            <div class="skill-header">
+                            <img src="img/tools.png" alt="Tools">
+                            <h3>Tools</h3>
+                            </div>
+                            <div class="skill-tags">
+                            <span>Git</span>
+                            <span>GitHub Desktop</span>
+                            <span>Visual Studio</span>
+                            <span>Unity Hub</span>
+                            <span>Blender</span>
+                            <span>Aseprite</span>
+                            <span>Figma</span>
+                            <span>Photoshop</span>
+                            <span>FMOD</span>
+                            </div>
+                        </div>
+
+                        <!-- Workflow & Soft Skills -->
+                        <div class="skill-card">
+                            <div class="skill-header">
+                            <img src="img/handshakke.png" alt="Workflow">
+                            <h3>Workflow & Soft Skills</h3>
+                            </div>
+                            <div class="skill-tags">
+                            <span>Git Flow</span>
+                            <span>Merge Conflict Resolution</span>
+                            <span>Trello</span>
+                            <span>Problem Solving</span>
+                            <span>Debugging</span>
+                            <span>Communication</span>
+                            <span>Fast Learner</span>
+                            <span>Rapid Prototyping</span>
+                            </div>
+                        </div>
+                        </div>
+                </section>
         </main>
-        <footer></footer>
+        <footer class="footer">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    Hikari <span>Aufa</span> Portfolio
+                </div>
+                <p>© 2026 Hikari Yafi. All rights reserved.</p>
+            </div>
+
+            <div class="footer-center">
+                <div class="footer-info">
+                    <img src="img/mail.png" alt="email">
+                    <span>hikari32yafi@gmail.com</span>
+                </div>
+
+                <div class="footer-info">
+                    <img src="img/locarion blue.png" alt="location">
+                    <span>Indonesia</span>
+                </div>
+            </div>
+
+            <div class="footer-right">
+                <a href="https://github.com/Hikariyafi35" target="_blank">
+                    <img src="img/github.png" alt="github">
+                </a>
+
+                <a href="https://linkedin.com/in/hikariaufa" target="_blank">
+                    <img src="img/linkedin.png" alt="linkedin">
+                </a>
+
+                <a href="https://hikariyafi35.itch.io/" target="_blank">
+                    <img src="img/itchio.png" alt="itch io">
+                </a>
+
+                <a href="https://www.instagram.com/hikariyfi/" target="_blank">
+                    <img src="img/ig.png" alt="instagram">
+                </a>
+            </div>
+        </footer>
         <script src="script/script.js"></script>
     </body>
 </html>
