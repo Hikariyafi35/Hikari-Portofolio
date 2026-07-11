@@ -1,5 +1,13 @@
 const projects = [
   {
+    title: "Dreamify",
+    genre: "Puzzle 2D",
+    role: "Game Programmer",
+    desc: "Alone at home, a child turns isolation into a playground of imagination.",
+    image: "img/dreamify.png",
+    link: "https://timgarde.itch.io/dreamify",
+  },
+  {
     title: "Natureration",
     genre: "Narrative 2D",
     role: "Gameplay Programmer",
