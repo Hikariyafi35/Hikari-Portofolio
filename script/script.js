@@ -24,6 +24,14 @@ const projects = [
     link: "https://geniuscion-studio.itch.io/bladenspell",
   },
   {
+    title: "Bob The Knight",
+    genre: "Turn-Based",
+    role: "Game Programmer",
+    desc: "2D turn-based game with simple dialog",
+    image: "img/bob.png",
+    link: "https://hikariyafi35.itch.io/bob-the-knight",
+  },
+  {
     title: "The Unworn",
     genre: "3D Platformer",
     role: "Game Programmer",
