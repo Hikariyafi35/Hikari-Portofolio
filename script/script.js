@@ -16,8 +16,15 @@ const projects = [
         desc: "2nd Place Winner at ICW Sayembara Game Competition — review reports and resolve climate corruption conflicts in Indonesia.",
         details: "Awarded 2nd Place (Tim Garde — \"Nature's Ration\") at the ICW Sayembara Game Development End Climate Corruption 2026. Developed a 2D narrative game centered on corruption and environmental issues set in Indonesia — implementing Scriptable Objects to manage reports and dialogue alongside a multiple-ending system driven by the player's cumulative choice score.",
         tags: ["Scriptable Objects", "Multiple Endings", "Dialogue System", "Unity 2D"],
+        architecture: [
+            { label: "Data Architecture", text: "Scriptable Objects structured to store modular environmental reports, case metadata, and branching dialogue data cleanly." },
+            { label: "Outcome Engine", text: "Cumulative choice-score tracker evaluating player decisions across cases to resolve multiple narrative endings." },
+            { label: "UI & Flow", text: "2D inspection interface for reviewing incoming official reports and resolving climate-corruption conflicts." },
+            { label: "Recognition", text: "2nd Place Winner (Tim Garde — \"Nature's Ration\") at ICW × The Lazy Monday Sayembara Game Development." }
+        ],
         image: "img/natureration.png",
         link: "https://hikariyafi35.itch.io/government-simulator",
+        itchEmbedId: "4524462",
         featured: true,
         squareFit: false
     },
@@ -33,8 +40,15 @@ const projects = [
         desc: "2D top-down puzzle game featuring a Dual-World dimension-switching mechanic.",
         details: "Developed for Gameseed 2026 — a 2D top-down puzzle game in Unity (C#) featuring a Dual-World dimension-switching mechanic. Responsible for core gameplay programming, enemy AI (FSM), 2D physics optimization, Fungus dialogue integration, Singleton-based audio architecture, and WebGL deployment.",
         tags: ["Dual-World Mechanic", "FSM Enemy AI", "Fungus Dialogue", "WebGL"],
+        architecture: [
+            { label: "Core Mechanic", text: "Dual-World dimension-switching system toggling interactive puzzle states and traversal rules in top-down 2D." },
+            { label: "Enemy AI & Physics", text: "Finite State Machine (FSM) enemy behavior paired with optimized 2D Rigidbody physics and collision handling." },
+            { label: "Narrative & Audio", text: "Fungus dialogue integration for story beats alongside a Singleton-based audio manager across scenes." },
+            { label: "Deployment", text: "Built and optimized in Unity (C#) for browser-ready WebGL deployment (Gameseed 2026)." }
+        ],
         image: "img/dreamify.png",
         link: "https://timgarde.itch.io/dreamify",
+        itchEmbedId: "4742559",
         featured: true,
         squareFit: false
     },
@@ -45,13 +59,20 @@ const projects = [
         category: "Action & Combat",
         role: "Game Developer",
         platform: "Itch.io",
-        studio: "Intsys Lab · Udinus Internship",
+        studio: "Oraple Studio · Intsys Lab Udinus",
         award: null,
         desc: "2D musou hack-and-slash survival game — strategically select spells, survive enemy waves, and defeat bosses.",
         details: "Internship project at Intsys Lab, Universitas Dian Nuswantoro. Developed a 2D musou hack-and-slash survival game where players strategically pick spells to survive escalating waves and achieve high scores. Built core gameplay mechanics, enemy AI, wave spawning systems, UI/UX, and itch.io asset integration.",
         tags: ["Musou Survival", "Wave Spawner", "Enemy AI", "Spell Progression"],
+        architecture: [
+            { label: "Combat & Spells", text: "2D musou hack-and-slash combat loop with strategic spell selection and level-up build progression." },
+            { label: "Wave & Enemy AI", text: "Escalating enemy wave spawner coordinated with autonomous enemy AI and boss encounter pacing." },
+            { label: "UI & Scoring", text: "Real-time gameplay HUD, spell picker UI/UX, and high-score tracking systems." },
+            { label: "Asset Pipeline", text: "Integrated sprite animations, combat effects, and audio assets from itch.io into Unity." }
+        ],
         image: "img/BladeNSpel.png",
-        link: "https://geniuscion-studio.itch.io/bladenspell",
+        link: "https://oraple-studio.itch.io/bladenspell",
+        itchEmbedId: "3184176",
         featured: true,
         squareFit: false
     },
@@ -67,6 +88,11 @@ const projects = [
         desc: "Use magical masks with unique abilities to solve 3D platforming challenges.",
         details: "Built for Global Game Jam 2026 — a 3D platformer where switching between magical masks unlocks distinct traversal and puzzle-solving abilities.",
         tags: ["Unity 3D", "Ability Switching", "Global Game Jam"],
+        architecture: [
+            { label: "Mask Ability System", text: "Modular mask-switching mechanic granting distinct movement and puzzle-solving abilities on demand." },
+            { label: "3D Platforming", text: "Responsive 3D character movement, jump feel, and spatial platform challenge flow in Unity." },
+            { label: "Jam Production", text: "Rapidly prototyped, integrated, and shipped under Global Game Jam 2026 time constraints." }
+        ],
         image: "img/TheUnworn.png",
         link: "https://globalgamejam.org/games/2026/unworn-8",
         featured: true,
@@ -84,8 +110,14 @@ const projects = [
         desc: "2D turn-based RPG prototype with state-driven combat, world exploration, and keyboard UI navigation.",
         details: "Developed a 2D turn-based RPG prototype in Unity and C#. Implemented a state machine-based battle system, enemy AI, world map exploration, scene transitions, NPC movement, and full keyboard navigation using Unity's Event System.",
         tags: ["Turn-Based FSM", "World Exploration", "Unity Event System"],
+        architecture: [
+            { label: "Battle State Machine", text: "State-machine driven turn-based combat managing player turns, enemy AI actions, and win/loss flow." },
+            { label: "World & NPCs", text: "2D world map exploration, autonomous NPC movement routines, and lightweight dialog interactions." },
+            { label: "Input & UI Flow", text: "Keyboard-first menu navigation wired through Unity's Event System alongside clean scene transitions." }
+        ],
         image: "img/bob.png",
         link: "https://hikariyafi35.itch.io/bob-the-knight",
+        itchEmbedId: "4912489",
         featured: true,
         squareFit: false
     },
@@ -444,6 +476,7 @@ const state = {
     activeCertCategory: "All",
     modalOpen: false,
     modalMode: "project", // "project" | "certificate"
+    modalTab: "overview", // "overview" | "architecture"
     modalList: projects,
     modalIndex: 0
 };
@@ -854,7 +887,76 @@ function renderCertificates() {
    -------------------------------------------------------------------------- */
 function renderProjectModal(project) {
     const globalIdx = projects.findIndex((p) => p.id === project.id);
+    const hasArch = Array.isArray(project.architecture) && project.architecture.length > 0;
+    const activeTab = hasArch ? state.modalTab : "overview";
+
     modalIndexEl.textContent = `PROJECT // #${padIndex(globalIdx)} (${state.modalIndex + 1} of ${state.modalList.length})`;
+
+    const itchWidgetHtml = project.itchEmbedId
+        ? `
+            <div class="itch-embed-shell">
+                <div class="itch-embed-head">
+                    <span>ITCH.IO LIVE WIDGET</span>
+                    <span class="accent">PLAY / DOWNLOAD ↗</span>
+                </div>
+                <div class="itch-embed-frame-wrap">
+                    <iframe
+                        src="https://itch.io/embed/${project.itchEmbedId}?bg_color=14161a&amp;fg_color=f2efe9&amp;link_color=e5a93b&amp;border_color=272b33"
+                        title="${escapeHtml(project.title)} on itch.io"
+                        loading="lazy"
+                    >
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer">${escapeHtml(project.title)} on itch.io</a>
+                    </iframe>
+                </div>
+            </div>
+        `
+        : "";
+
+    const tabsHtml = hasArch
+        ? `
+            <div class="modal-tabs" role="tablist" aria-label="Project details view">
+                <button type="button" class="modal-tab-btn ${activeTab === "overview" ? "active" : ""}" data-modal-tab="overview" role="tab" aria-selected="${activeTab === "overview"}">Overview</button>
+                <button type="button" class="modal-tab-btn ${activeTab === "architecture" ? "active" : ""}" data-modal-tab="architecture" role="tab" aria-selected="${activeTab === "architecture"}">Systems &amp; Architecture</button>
+            </div>
+        `
+        : "";
+
+    const tabContentHtml =
+        activeTab === "architecture" && hasArch
+            ? `
+                <div class="arch-list">
+                    ${project.architecture
+                        .map(
+                            (item) => `
+                        <div class="arch-card">
+                            <span class="arch-card-label">${item.label}</span>
+                            <p>${item.text}</p>
+                        </div>
+                    `
+                        )
+                        .join("")}
+                </div>
+            `
+            : `
+                <p class="modal-desc">${project.details}</p>
+
+                <div class="modal-specs">
+                    <div class="modal-spec-box">
+                        <span>Role</span>
+                        <strong>${project.role}</strong>
+                    </div>
+                    <div class="modal-spec-box">
+                        <span>Event / Studio</span>
+                        <strong>${project.studio}</strong>
+                    </div>
+                    <div class="modal-spec-box">
+                        <span>Core System</span>
+                        <strong>${project.tags[0]}</strong>
+                    </div>
+                </div>
+
+                ${itchWidgetHtml}
+            `;
 
     modalBodyEl.innerHTML = `
         <div class="modal-hero-media ${project.squareFit ? "square-fit" : ""}">
@@ -875,22 +977,8 @@ function renderProjectModal(project) {
             </div>
         </div>
 
-        <p class="modal-desc">${project.details}</p>
-
-        <div class="modal-specs">
-            <div class="modal-spec-box">
-                <span>Role</span>
-                <strong>${project.role}</strong>
-            </div>
-            <div class="modal-spec-box">
-                <span>Event / Studio</span>
-                <strong>${project.studio}</strong>
-            </div>
-            <div class="modal-spec-box">
-                <span>Core System</span>
-                <strong>${project.tags[0]}</strong>
-            </div>
-        </div>
+        ${tabsHtml}
+        ${tabContentHtml}
 
         <div class="chip-row" style="margin-bottom: 22px;">
             ${project.tags.map((t) => `<span class="chip">${t}</span>`).join("")}
@@ -904,6 +992,14 @@ function renderProjectModal(project) {
             </a>
         </div>
     `;
+
+    modalBodyEl.querySelectorAll(".modal-tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state.modalTab = btn.dataset.modalTab;
+            renderProjectModal(project);
+            if (window.GameSFX) window.GameSFX.tab();
+        });
+    });
 }
 
 function renderCertificateModal(cert) {
@@ -989,6 +1085,7 @@ function renderModalContent() {
 function openModal(mode, list, index) {
     lastFocusedBeforeModal = document.activeElement;
     state.modalMode = mode;
+    state.modalTab = "overview";
     state.modalList = list;
     state.modalIndex = index;
     state.modalOpen = true;
@@ -1017,6 +1114,7 @@ function stepModal(delta) {
     if (!state.modalOpen || state.modalList.length <= 1) return;
     const len = state.modalList.length;
     state.modalIndex = (state.modalIndex + delta + len) % len;
+    state.modalTab = "overview";
     renderModalContent();
     modalBodyEl.scrollTop = 0;
     if (window.GameSFX) window.GameSFX.tab();
