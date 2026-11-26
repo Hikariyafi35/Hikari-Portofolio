@@ -25,6 +25,7 @@ const projects = [
         image: "img/natureration.png",
         link: "https://hikariyafi35.itch.io/government-simulator",
         itchEmbedId: "4524462",
+        itchPlayUrl: "https://itch.io/embed-upload/17349619?color=14161a",
         featured: true,
         squareFit: false
     },
@@ -49,6 +50,7 @@ const projects = [
         image: "img/dreamify.png",
         link: "https://timgarde.itch.io/dreamify",
         itchEmbedId: "4742559",
+        itchPlayUrl: "https://itch.io/embed-upload/18197788?color=14161a",
         featured: true,
         squareFit: false
     },
@@ -118,6 +120,7 @@ const projects = [
         image: "img/bob.png",
         link: "https://hikariyafi35.itch.io/bob-the-knight",
         itchEmbedId: "4912489",
+        itchPlayUrl: "https://itch.io/embed-upload/18868732?color=14161a",
         featured: true,
         squareFit: false
     },
@@ -218,6 +221,7 @@ const projects = [
         tags: ["Clicker Mechanics", "Game Balancing", "UI Systems"],
         image: "img/playgod.jpg",
         link: "https://cukurukukuk.itch.io/playgod",
+        itchPlayUrl: "https://itch.io/embed-upload/15623339?color=14161a",
         featured: false,
         squareFit: false
     },
@@ -234,6 +238,7 @@ const projects = [
         tags: ["2D Platformer", "Scene Management", "Movement"],
         image: "img/ufoescape.jpg",
         link: "https://hikariyafi35.itch.io/ufo-escape",
+        itchPlayUrl: "https://itch.io/embed-upload/17499234?color=14161a",
         featured: false,
         squareFit: false
     },
@@ -250,6 +255,7 @@ const projects = [
         tags: ["2D Physics", "Score Loop", "Rapid Prototype"],
         image: "img/flapfish.jpg",
         link: "https://hikariyafi35.itch.io/flappy-fish",
+        itchPlayUrl: "https://itch.io/embed-upload/17499574?color=14161a",
         featured: false,
         squareFit: false
     }
@@ -482,7 +488,7 @@ const state = {
 };
 
 const featuredProjects = projects.filter((p) => p.featured);
-const categories = ["All", "Puzzle", "Action & Combat", "Platformer", "Arcade & Narrative"];
+const categories = ["All", "▶ Playable", "Puzzle", "Action & Combat", "Platformer", "Arcade & Narrative"];
 const certCategories = ["All", "Game Dev & Unity", "Awards & Events"];
 
 /* --------------------------------------------------------------------------
@@ -533,7 +539,8 @@ function getFilteredProjects() {
     const q = state.searchQuery.trim().toLowerCase();
     return projects.filter((project) => {
         const matchCategory =
-            state.activeCategory === "All" || project.category === state.activeCategory;
+            state.activeCategory === "All" ||
+            (state.activeCategory === "▶ Playable" ? Boolean(project.itchPlayUrl) : project.category === state.activeCategory);
         if (!matchCategory) return false;
         if (!q) return true;
         const haystack = [
@@ -623,19 +630,37 @@ function renderSpotlightStage() {
             </div>
 
             <div class="spotlight-actions">
-                <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <span>Play on ${project.platform}</span>
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-                </a>
+                ${
+                    project.itchPlayUrl
+                        ? `<button type="button" class="btn btn-primary" id="spotlight-play-inline-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                            <span>Play In-Browser</span>
+                           </button>`
+                        : `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <span>Play on ${project.platform}</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                           </a>`
+                }
                 <button type="button" class="btn btn-secondary" id="spotlight-inspect-btn">
                     <span>Inspect Details</span>
                 </button>
+                ${
+                    project.itchPlayUrl
+                        ? `<a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <span>Itch.io ↗</span>
+                           </a>`
+                        : ""
+                }
             </div>
         </div>
     `;
 
+    document.getElementById("spotlight-play-inline-btn")?.addEventListener("click", () => {
+        openModal("project", projects, projectGlobalIndex, "play");
+    });
+
     document.getElementById("spotlight-inspect-btn").addEventListener("click", () => {
-        openModal("project", projects, projectGlobalIndex);
+        openModal("project", projects, projectGlobalIndex, "overview");
     });
 }
 
@@ -653,7 +678,9 @@ function renderFilters() {
             const count =
                 cat === "All"
                     ? projects.length
-                    : projects.filter((p) => p.category === cat).length;
+                    : cat === "▶ Playable"
+                      ? projects.filter((p) => Boolean(p.itchPlayUrl)).length
+                      : projects.filter((p) => p.category === cat).length;
             const active = state.activeCategory === cat;
             return `
                 <button type="button" class="filter-btn ${active ? "active" : ""}" data-cat="${cat}">
@@ -714,6 +741,7 @@ function renderProjects() {
                         <span class="card-index">#${padIndex(globalIdx)}</span>
                         <span class="card-genre">${project.genre}</span>
                         ${project.award ? `<span class="card-award-ribbon">🏆 2nd Place ICW</span>` : ""}
+                        ${project.itchPlayUrl ? `<span class="playable-pill">▶ Playable</span>` : ""}
                         <span class="card-hover-hint">Inspect ↗</span>
                     </div>
 
@@ -888,7 +916,10 @@ function renderCertificates() {
 function renderProjectModal(project) {
     const globalIdx = projects.findIndex((p) => p.id === project.id);
     const hasArch = Array.isArray(project.architecture) && project.architecture.length > 0;
-    const activeTab = hasArch ? state.modalTab : "overview";
+    const hasPlay = Boolean(project.itchPlayUrl);
+    let activeTab = state.modalTab;
+    if (activeTab === "architecture" && !hasArch) activeTab = "overview";
+    if (activeTab === "play" && !hasPlay) activeTab = "overview";
 
     modalIndexEl.textContent = `PROJECT // #${padIndex(globalIdx)} (${state.modalIndex + 1} of ${state.modalList.length})`;
 
@@ -912,57 +943,95 @@ function renderProjectModal(project) {
         `
         : "";
 
-    const tabsHtml = hasArch
+    const showTabs = hasArch || hasPlay;
+    const tabsHtml = showTabs
         ? `
             <div class="modal-tabs" role="tablist" aria-label="Project details view">
+                ${
+                    hasPlay
+                        ? `<button type="button" class="modal-tab-btn play-tab ${activeTab === "play" ? "active" : ""}" data-modal-tab="play" role="tab" aria-selected="${activeTab === "play"}">▶ Play Game</button>`
+                        : ""
+                }
                 <button type="button" class="modal-tab-btn ${activeTab === "overview" ? "active" : ""}" data-modal-tab="overview" role="tab" aria-selected="${activeTab === "overview"}">Overview</button>
-                <button type="button" class="modal-tab-btn ${activeTab === "architecture" ? "active" : ""}" data-modal-tab="architecture" role="tab" aria-selected="${activeTab === "architecture"}">Systems &amp; Architecture</button>
+                ${
+                    hasArch
+                        ? `<button type="button" class="modal-tab-btn ${activeTab === "architecture" ? "active" : ""}" data-modal-tab="architecture" role="tab" aria-selected="${activeTab === "architecture"}">Systems &amp; Architecture</button>`
+                        : ""
+                }
             </div>
         `
         : "";
 
-    const tabContentHtml =
-        activeTab === "architecture" && hasArch
-            ? `
-                <div class="arch-list">
-                    ${project.architecture
-                        .map(
-                            (item) => `
-                        <div class="arch-card">
-                            <span class="arch-card-label">${item.label}</span>
-                            <p>${item.text}</p>
-                        </div>
-                    `
-                        )
-                        .join("")}
-                </div>
-            `
-            : `
-                <p class="modal-desc">${project.details}</p>
-
-                <div class="modal-specs">
-                    <div class="modal-spec-box">
-                        <span>Role</span>
-                        <strong>${project.role}</strong>
-                    </div>
-                    <div class="modal-spec-box">
-                        <span>Event / Studio</span>
-                        <strong>${project.studio}</strong>
-                    </div>
-                    <div class="modal-spec-box">
-                        <span>Core System</span>
-                        <strong>${project.tags[0]}</strong>
+    let tabContentHtml = "";
+    if (activeTab === "play" && hasPlay) {
+        tabContentHtml = `
+            <div class="webgl-player-shell" id="webgl-player-shell">
+                <div class="webgl-player-bar">
+                    <span class="webgl-live-dot">WEBGL EMBED // ${escapeHtml(project.title.toUpperCase())}</span>
+                    <div class="webgl-player-actions">
+                        <button type="button" class="eng-btn" id="webgl-fullscreen-btn">⛶ Fullscreen</button>
+                        <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="eng-btn">Itch.io ↗</a>
                     </div>
                 </div>
+                <div class="webgl-frame-wrap">
+                    <iframe
+                        src="${project.itchPlayUrl}"
+                        title="Play ${escapeHtml(project.title)}"
+                        allowfullscreen
+                        allow="autoplay; fullscreen *; gamepad *"
+                    ></iframe>
+                </div>
+            </div>
+        `;
+    } else if (activeTab === "architecture" && hasArch) {
+        tabContentHtml = `
+            <div class="arch-list">
+                ${project.architecture
+                    .map(
+                        (item) => `
+                    <div class="arch-card">
+                        <span class="arch-card-label">${item.label}</span>
+                        <p>${item.text}</p>
+                    </div>
+                `
+                    )
+                    .join("")}
+            </div>
+        `;
+    } else {
+        tabContentHtml = `
+            <p class="modal-desc">${project.details}</p>
 
-                ${itchWidgetHtml}
-            `;
+            <div class="modal-specs">
+                <div class="modal-spec-box">
+                    <span>Role</span>
+                    <strong>${project.role}</strong>
+                </div>
+                <div class="modal-spec-box">
+                    <span>Event / Studio</span>
+                    <strong>${project.studio}</strong>
+                </div>
+                <div class="modal-spec-box">
+                    <span>Core System</span>
+                    <strong>${project.tags[0]}</strong>
+                </div>
+            </div>
+
+            ${itchWidgetHtml}
+        `;
+    }
 
     modalBodyEl.innerHTML = `
-        <div class="modal-hero-media ${project.squareFit ? "square-fit" : ""}">
-            ${project.squareFit ? `<div class="modal-hero-media-bg" style="background-image:url('${encodeURI(project.image)}')"></div>` : ""}
-            <img src="${project.image}" alt="${project.title} preview" />
-        </div>
+        ${
+            activeTab === "play"
+                ? ""
+                : `
+            <div class="modal-hero-media ${project.squareFit ? "square-fit" : ""}">
+                ${project.squareFit ? `<div class="modal-hero-media-bg" style="background-image:url('${encodeURI(project.image)}')"></div>` : ""}
+                <img src="${project.image}" alt="${project.title} preview" />
+            </div>
+        `
+        }
 
         ${project.award ? `<div class="award-pill">🏆 ${project.award}</div>` : ""}
 
@@ -986,10 +1055,20 @@ function renderProjectModal(project) {
 
         <div class="modal-footer">
             <span class="modal-kbd-hint">Navigate: <kbd>←</kbd> <kbd>→</kbd> · Close: <kbd>Esc</kbd></span>
-            <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                <span>Open on ${project.platform}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            </a>
+            <div class="modal-footer-actions">
+                ${
+                    hasPlay && activeTab !== "play"
+                        ? `<button type="button" class="btn btn-primary" id="modal-launch-play-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+                            <span>Play In-Browser</span>
+                           </button>`
+                        : ""
+                }
+                <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="btn ${hasPlay && activeTab !== "play" ? "btn-secondary" : "btn-primary"}">
+                    <span>Open on ${project.platform}</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+            </div>
         </div>
     `;
 
@@ -999,6 +1078,24 @@ function renderProjectModal(project) {
             renderProjectModal(project);
             if (window.GameSFX) window.GameSFX.tab();
         });
+    });
+
+    document.getElementById("modal-launch-play-btn")?.addEventListener("click", () => {
+        state.modalTab = "play";
+        renderProjectModal(project);
+        modalBodyEl.scrollTop = 0;
+        if (window.GameSFX) window.GameSFX.tab();
+    });
+
+    document.getElementById("webgl-fullscreen-btn")?.addEventListener("click", () => {
+        const shell = document.getElementById("webgl-player-shell");
+        if (!shell) return;
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        } else {
+            shell.requestFullscreen?.().catch(() => {});
+        }
+        if (window.GameSFX) window.GameSFX.click();
     });
 }
 
@@ -1082,10 +1179,10 @@ function renderModalContent() {
     modalNextBtn.disabled = !hasMultiple;
 }
 
-function openModal(mode, list, index) {
+function openModal(mode, list, index, initialTab = "overview") {
     lastFocusedBeforeModal = document.activeElement;
     state.modalMode = mode;
-    state.modalTab = "overview";
+    state.modalTab = initialTab;
     state.modalList = list;
     state.modalIndex = index;
     state.modalOpen = true;
@@ -1104,6 +1201,8 @@ function closeModal() {
     modalEl.classList.remove("open");
     modalEl.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    // Unmount any active WebGL iframe so game audio & CPU stop immediately
+    modalBodyEl.innerHTML = "";
     if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === "function") {
         lastFocusedBeforeModal.focus();
     }
