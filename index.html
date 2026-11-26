@@ -1,280 +1,494 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Hikari Aufa Portofolio</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hikari Aufa — Unity Gameplay Programmer</title>
+    <meta name="description" content="Portfolio of Hikari Aufa Yafi — Unity Gameplay Programmer specializing in character controllers, FSM enemy AI, combat loops, and interactive game systems." />
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="assets/style.css"/>
+    <!-- Fonts: Space Grotesk (Display), Plus Jakarta Sans (Body), JetBrains Mono (Technical) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
-        <!-- Google Fonts-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+    <!-- Subtle Blueprint Grid Overlay -->
+    <div class="bg-grid" aria-hidden="true"></div>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        
-        <header class="navbar">
-            <div class="logo">Hikari <span>Aufa</span> Portfolio</div>
-            <nav>
-                <a href="#biodata">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#skills">Skills</a>
+    <!-- Top Scroll Progress Hairline -->
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-inner">
+            <a href="#hero" class="brand" aria-label="Hikari Aufa Home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span class="brand-text">HIKARI<span>.DEV</span></span>
+            </a>
+
+            <nav class="nav-links" id="nav-links" aria-label="Primary Navigation">
+                <a href="#projects" data-section="projects"><span class="nav-idx">01</span> Projects</a>
+                <a href="#experience" data-section="experience"><span class="nav-idx">02</span> Experience</a>
+                <a href="#biodata" data-section="biodata"><span class="nav-idx">03</span> About</a>
+                <a href="#skills" data-section="skills"><span class="nav-idx">04</span> Skills</a>
             </nav>
-        </header>
-        <main>
-            <section id="hero">
-                <div class="hero-text">
-                    <h1 class="hero-calling">HI, I'M</h1>
-                    <h2 class="Name-section-hero">Hikari Aufa</h2>
-                    <p>Unity Gameplay Programmer, creating engaging gameplay and interacting systems.</p>
-                    <div class="hero-buttons">
-                        <button class="viewProject-btn" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
-                        <a href="mailto:hikari32yafi@gmail.com" class="contact-btn">Contact Me</a>
-                    </div>
-                </div>
-                <div class="hero-profile">
-                    <div class="profile-frame">
-                        <img src="img/profile.png" alt="profile">
-                    </div>
-                </div>
-            </section>
-            <section id="biodata">
-                <div class="biodata-image">
-                    <img src="img/gif.gif" alt="about image">
-                </div>
 
-                <div class="biodata-content">
-                    <h3>ABOUT ME</h3>
-                    <h2>Hikari Aufa Yafi</h2>
+            <div class="nav-actions">
+                <a href="mailto:hikari32yafi@gmail.com" class="nav-cta">
+                    <span>Get in Touch</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                </a>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-                    <p>
-                        Informatics Engineering student 
-                        with strong passion in game development and programming.
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <div class="mobile-drawer-inner">
+            <a href="#projects" class="mobile-link"><span>01 //</span> Projects</a>
+            <a href="#experience" class="mobile-link"><span>02 //</span> Experience</a>
+            <a href="#biodata" class="mobile-link"><span>03 //</span> About</a>
+            <a href="#skills" class="mobile-link"><span>04 //</span> Skills</a>
+            <div class="mobile-drawer-footer">
+                <a href="mailto:hikari32yafi@gmail.com" class="btn btn-primary">hikari32yafi@gmail.com</a>
+                <div class="mobile-socials">
+                    <a href="https://github.com/Hikariyafi35" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://hikariyafi35.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a>
+                    <a href="https://linkedin.com/in/hikariaufa" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero">
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <div class="status-pill reveal">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        <span>UNITY GAMEPLAY PROGRAMMER · INDONESIA</span>
+                    </div>
+
+                    <h1 class="hero-title reveal">
+                        Hikari Aufa
+                        <span class="hero-title-sub">Builds tactile gameplay &amp; living systems.</span>
+                    </h1>
+
+                    <p class="hero-lead reveal">
+                        Informatics Engineering student &amp; indie gameplay programmer crafting character controllers, FSM enemy AI, combat mechanics, and synchronized FMOD audio in Unity &amp; C#.
                     </p>
 
-                    <p>
-                        Skilled in Unity, gameplay programming, and AI systems,
-                        with experience building game mechanics and interactive gameplay.
+                    <div class="hero-actions reveal">
+                        <a href="#projects" class="btn btn-primary">
+                            <span>Explore Archive</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                        </a>
+
+                        <button type="button" class="btn btn-secondary" id="copy-email-btn" data-email="hikari32yafi@gmail.com">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                            <span class="copy-label">Copy Email</span>
+                        </button>
+
+                        <div class="hero-quick-links">
+                            <a href="https://hikariyafi35.itch.io/" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Itch.io Profile" title="Itch.io">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16l1.5 3.5a2.5 2.5 0 0 1-2.3 3.5 2.5 2.5 0 0 1-2.2-1.4A2.5 2.5 0 0 1 14.5 14a2.5 2.5 0 0 1-2.5-1.5A2.5 2.5 0 0 1 9.5 14a2.5 2.5 0 0 1-2.5-1.4A2.5 2.5 0 0 1 4.8 14a2.5 2.5 0 0 1-2.3-3.5Z"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/><path d="M9 17h2"/><path d="M10 16v2"/><circle cx="15" cy="17" r="0.6" fill="currentColor"/></svg>
+                            </a>
+                            <a href="https://github.com/Hikariyafi35" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="GitHub Profile" title="GitHub">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            </a>
+                            <a href="https://linkedin.com/in/hikariaufa" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="LinkedIn Profile" title="LinkedIn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-metrics reveal">
+                        <div class="metric">
+                            <span class="metric-val">13</span>
+                            <span class="metric-label">Playable Titles</span>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric">
+                            <span class="metric-val">5</span>
+                            <span class="metric-label">Programs &amp; Internships</span>
+                        </div>
+                        <div class="metric-divider" aria-hidden="true"></div>
+                        <div class="metric">
+                            <span class="metric-val">3.67</span>
+                            <span class="metric-label">GPA · Udinus</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Dev Inspector Character Card -->
+                <aside class="hero-inspector reveal" id="hero-inspector" aria-label="Developer Profile Inspector">
+                    <div class="inspector-chrome">
+                        <div class="inspector-title">
+                            <span class="inspector-cube" aria-hidden="true"></span>
+                            <span>HikariAufa.prefab</span>
+                        </div>
+                        <span class="inspector-badge">UNITY C#</span>
+                    </div>
+
+                    <div class="inspector-viewport">
+                        <span class="corner tl" aria-hidden="true"></span>
+                        <span class="corner tr" aria-hidden="true"></span>
+                        <span class="corner bl" aria-hidden="true"></span>
+                        <span class="corner br" aria-hidden="true"></span>
+                        <div class="viewport-bg-glow" aria-hidden="true"></div>
+                        <img src="img/profile.png" alt="Pixel art portrait of Hikari Aufa" class="portrait-img" />
+                        <div class="viewport-hud">
+                            <span>SPRITE // 600×600</span>
+                            <span>IDLE_STANCE</span>
+                        </div>
+                    </div>
+
+                    <div class="inspector-props">
+                        <div class="prop-row">
+                            <span class="prop-key">Role</span>
+                            <span class="prop-val">Gameplay Programmer</span>
+                        </div>
+                        <div class="prop-row">
+                            <span class="prop-key">Core Stack</span>
+                            <span class="prop-val">Unity · C# · FSM AI · FMOD</span>
+                        </div>
+                        <div class="prop-row">
+                            <span class="prop-key">Latest</span>
+                            <span class="prop-val accent">Intern @ Nouverior</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- SECTION 01: INTERACTIVE PROJECT EXPLORER -->
+        <section id="projects" class="section projects-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="section-eyebrow">01 // PLAYABLE ARCHIVE</span>
+                        <h2 class="section-heading">Selected Games &amp; Prototypes</h2>
+                    </div>
+                    <p class="section-sub">
+                        13 game jam entries, studio builds, and solo prototypes. Filter by genre, switch views, or open any cartridge to inspect mechanics and play directly.
                     </p>
+                </div>
 
-                    <div class="biodata-info">
-                        <div class="info-item">
-                            <img src="img/locarion blue.png" alt="location icon">
-                            <div class="info-text">
-                                <h4>Location</h4>
-                                <span>Indonesia</span>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                            <img src="img/education blue.png" alt="education icon">
-                            <div class="info-text">
-                                <h4>Education</h4>
-                                <span>Dian Nuswantoro University  GPA 3.67</span>
-                            </div>
-                        </div>
-
-                        <div class="info-item">
-                        <img src="img/gear blue.png" alt="role icon">
-                        <div class="info-text">
-                            <h4>Role</h4>
-                            <span>Unity Gameplay Programmer</span>
-                        </div>
+                <!-- Featured Spotlight Switcher -->
+                <div class="spotlight-shell reveal" aria-label="Featured Projects Spotlight">
+                    <div class="spotlight-tabs" id="spotlight-tabs" role="tablist" aria-label="Featured Games">
+                        <!-- Rendered by JS -->
                     </div>
+                    <div class="spotlight-stage" id="spotlight-stage">
+                        <!-- Rendered by JS -->
                     </div>
                 </div>
-            </section>
-            <section id="experience">
-            <h2 class="section-title">EXPERIENCE</h2>
 
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-date">Feb 2024 - Jun 2024</div>
-
-                        <div class="timeline-content">
-                            <h3>Game Development Trainee</h3>
-                            <h4>Celerates</h4>
-                            <p>
-                                Learned game design fundamentals, Unity & C# programming,
-                                asset integration, UI/UX, sound design, and built a final game project.
-                            </p>
-                        </div>
+                <!-- Explorer Toolbar: Filters + Search + View Toggle -->
+                <div class="explorer-toolbar reveal">
+                    <div class="filter-group" id="filter-group" role="group" aria-label="Filter projects by category">
+                        <!-- Rendered by JS -->
                     </div>
 
-                    <div class="timeline-item">
-                        <div class="timeline-date">Sep 2024 - Dec 2024</div>
+                    <div class="toolbar-right">
+                        <label class="search-box" aria-label="Search projects">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                            <input type="search" id="project-search" placeholder="Search title or mechanic..." autocomplete="off" />
+                        </label>
 
-                        <div class="timeline-content">
-                            <h3>Gameplay Programmer Intern</h3>
-                            <h4>Intsys Lab - Udinus</h4>
-                            <p>
-                                Developed movement, combat, buff systems, FSM enemy AI,
-                                leaderboard systems, and VFX/audio integration.
-                            </p>
+                        <div class="view-toggle" role="group" aria-label="Layout view">
+                            <button type="button" class="view-btn active" data-view="grid" aria-label="Grid view" title="Grid View">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                            </button>
+                            <button type="button" class="view-btn" data-view="list" aria-label="List view" title="Archive List View">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+                            </button>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Mar 2025 – Apr 2025</div>
-
-                        <div class="timeline-content">
-                            <h3>AI Game Programming Course</h3>
-                            <h4>Agate</h4>
-                            <p>
-                                Focused on gameplay systems and enemy AI development using FSM. 
-                                Worked on score systems, scene management, Aseprite asset editing,
-                                and gameplay polish with audio/VFX.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">Jul 2025 – Dec 2025</div>
-
-                        <div class="timeline-content">
-                            <h3>Unity Game Developer Trainee</h3>
-                            <h4>Google Play × Unity Program</h4>
-                            <p>
-                                Designed and developed game projects, managed assets and workflows,
-                                integrated animations/scripts/lighting, created enemy NPC AI, 
-                                built particle VFX, and ported desktop builds to Android.
-                            </p>
-                        </div>
-                    </div>
-                        <div class="timeline-item">
-                            <div class="timeline-date">Jan 2026 – Apr 2026</div>
-
-                            <div class="timeline-content">
-                                <h3>Game Programmer Intern</h3>
-                                <h4>Nouverior</h4>
-                                <p>
-                                Contributed to character movement systems, skill selection mechanics, enemy AI behaviors, and audio integration using FMOD for synchronized gameplay sound effects.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <section id="projects">
-                <h2 class="section-title">PROJECTS</h2>
-                <div id="project-grid" class="project-grid"></div>
-            </section>
-            <section id="skills">
-                <h2 class="section-title">SKILLS</h2>
-
-                    <div class="skills-grid">
-                        <!-- Programming -->
-                        <div class="skill-card">
-                            <div class="skill-header">
-                            <img src="img/code.png" alt="Programming">
-                            <h3>Programming</h3>
-                            </div>
-                            <div class="skill-tags">
-                            <span>C#</span>
-                            <span>JavaScript</span>
-                            <span>HTML</span>
-                            <span>CSS</span>
-                            <span>Python</span>
-                            </div>
-                        </div>
-
-                        <!-- Game Development -->
-                        <div class="skill-card">
-                            <div class="skill-header">
-                            <img src="img/game2.png" alt="Game Development">
-                            <h3>Game Development</h3>
-                            </div>
-                            <div class="skill-tags">
-                            <span>Unity</span>
-                            <span>Gameplay Programming</span>
-                            <span>Enemy AI (FSM)</span>
-                            <span>Rigidbody Physics</span>
-                            <span>Scene Management</span>
-                            <span>Animation System</span>
-                            <span>Scriptable Object</span>
-                            <span>Audio Integration</span>
-                            <span>Game Balancing</span>
-                            </div>
-                        </div>
-
-                        <!-- Tools -->
-                        <div class="skill-card">
-                            <div class="skill-header">
-                            <img src="img/tools.png" alt="Tools">
-                            <h3>Tools</h3>
-                            </div>
-                            <div class="skill-tags">
-                            <span>Git</span>
-                            <span>GitHub Desktop</span>
-                            <span>Visual Studio</span>
-                            <span>Unity Hub</span>
-                            <span>Blender</span>
-                            <span>Aseprite</span>
-                            <span>Figma</span>
-                            <span>Photoshop</span>
-                            <span>FMOD</span>
-                            </div>
-                        </div>
-
-                        <!-- Workflow & Soft Skills -->
-                        <div class="skill-card">
-                            <div class="skill-header">
-                            <img src="img/handshakke.png" alt="Workflow">
-                            <h3>Workflow & Soft Skills</h3>
-                            </div>
-                            <div class="skill-tags">
-                            <span>Git Flow</span>
-                            <span>Merge Conflict Resolution</span>
-                            <span>Trello</span>
-                            <span>Problem Solving</span>
-                            <span>Debugging</span>
-                            <span>Communication</span>
-                            <span>Fast Learner</span>
-                            <span>Rapid Prototyping</span>
-                            </div>
-                        </div>
-                        </div>
-                </section>
-        </main>
-        <footer class="footer">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    Hikari <span>Aufa</span> Portfolio
                 </div>
-                <p>© 2026 Hikari Yafi. All rights reserved.</p>
+
+                <div class="explorer-meta">
+                    <span id="project-count">Showing 13 of 13 titles</span>
+                    <span class="explorer-hint">Tip: Click any card to inspect · Use ← → keys inside modal</span>
+                </div>
+
+                <!-- Dynamic Project Grid / Archive List -->
+                <div id="project-grid" class="project-grid" data-view="grid"></div>
             </div>
+        </section>
 
-            <div class="footer-center">
-                <div class="footer-info">
-                    <img src="img/mail.png" alt="email">
-                    <span>hikari32yafi@gmail.com</span>
+        <!-- SECTION 02: INTERACTIVE EXPERIENCE TRACK RECORD -->
+        <section id="experience" class="section experience-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="section-eyebrow">02 // TRACK RECORD</span>
+                        <h2 class="section-heading">Experience &amp; Training</h2>
+                    </div>
+                    <p class="section-sub">
+                        From foundational Unity training to production gameplay internships — select an entry to inspect responsibilities and systems built.
+                    </p>
                 </div>
 
-                <div class="footer-info">
-                    <img src="img/locarion blue.png" alt="location">
-                    <span>Indonesia</span>
+                <div class="exp-workbench reveal">
+                    <div class="exp-list" id="exp-list" role="tablist" aria-label="Experience timeline">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <div class="exp-detail" id="exp-detail" role="tabpanel" aria-live="polite">
+                        <!-- Rendered by JS -->
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="footer-right">
-                <a href="https://github.com/Hikariyafi35" target="_blank">
-                    <img src="img/github.png" alt="github">
-                </a>
+        <!-- SECTION 03: ABOUT / BIO -->
+        <section id="biodata" class="section about-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="section-eyebrow">03 // PROFILE</span>
+                        <h2 class="section-heading">About Hikari</h2>
+                    </div>
+                </div>
 
-                <a href="https://linkedin.com/in/hikariaufa" target="_blank">
-                    <img src="img/linkedin.png" alt="linkedin">
-                </a>
+                <div class="about-grid reveal">
+                    <div class="about-media-card">
+                        <div class="media-bar">
+                            <span class="media-dot"></span>
+                            <span>DEV_SCENE.GIF</span>
+                            <span class="media-tag">LOOP</span>
+                        </div>
+                        <div class="about-gif-wrap">
+                            <img src="img/gif.gif" alt="Game development showcase animation" loading="lazy" />
+                        </div>
+                        <div class="media-caption">
+                            <span>Iterating on feel, timing &amp; state machines.</span>
+                        </div>
+                    </div>
 
-                <a href="https://hikariyafi35.itch.io/" target="_blank">
-                    <img src="img/itchio.png" alt="itch io">
-                </a>
+                    <div class="about-body">
+                        <h3 class="about-name">Hikari Aufa Yafi</h3>
+                        <p>
+                            I'm an Informatics Engineering student at <strong>Dian Nuswantoro University</strong> with a deep focus on game development and gameplay architecture.
+                        </p>
+                        <p>
+                            Most of my work lives where code meets game feel — structuring clean Finite State Machines for enemy behaviors, tuning character movement and combat loops, wiring up FMOD audio cues, and shipping playable builds across rapid game jams and team internships.
+                        </p>
 
-                <a href="https://www.instagram.com/hikariyfi/" target="_blank">
-                    <img src="img/ig.png" alt="instagram">
-                </a>
+                        <div class="spec-grid">
+                            <div class="spec-item">
+                                <span class="spec-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </span>
+                                <div>
+                                    <span class="spec-label">Location</span>
+                                    <strong class="spec-value">Indonesia</strong>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <span class="spec-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                                </span>
+                                <div>
+                                    <span class="spec-label">Education</span>
+                                    <strong class="spec-value">Dian Nuswantoro University · GPA 3.67</strong>
+                                </div>
+                            </div>
+
+                            <div class="spec-item">
+                                <span class="spec-icon" aria-hidden="true">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                                </span>
+                                <div>
+                                    <span class="spec-label">Primary Role</span>
+                                    <strong class="spec-value">Unity Gameplay Programmer</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
-        <script src="script/script.js"></script>
-    </body>
+        </section>
+
+        <!-- SECTION 04: TOOLKIT & SKILLS -->
+        <section id="skills" class="section skills-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div>
+                        <span class="section-eyebrow">04 // ENGINE &amp; TOOLKIT</span>
+                        <h2 class="section-heading">Technical Stack</h2>
+                    </div>
+                    <p class="section-sub">
+                        Languages, Unity subsystems, audio &amp; art pipelines, and team workflows I ship games with.
+                    </p>
+                </div>
+
+                <div class="skills-grid reveal">
+                    <!-- Programming -->
+                    <article class="skill-module">
+                        <header class="skill-module-head">
+                            <div class="skill-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                            </div>
+                            <div>
+                                <span class="module-code">MOD_01</span>
+                                <h3>Programming</h3>
+                            </div>
+                        </header>
+                        <div class="skill-tags">
+                            <span class="tag primary">C#</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Python</span>
+                        </div>
+                    </article>
+
+                    <!-- Game Development -->
+                    <article class="skill-module">
+                        <header class="skill-module-head">
+                            <div class="skill-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="12" y2="12"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="15" x2="15.01" y1="13" y2="13"/><line x1="18" x2="18.01" y1="11" y2="11"/><rect width="20" height="12" x="2" y="6" rx="2"/></svg>
+                            </div>
+                            <div>
+                                <span class="module-code">MOD_02</span>
+                                <h3>Game Development</h3>
+                            </div>
+                        </header>
+                        <div class="skill-tags">
+                            <span class="tag primary">Unity</span>
+                            <span class="tag primary">Gameplay Programming</span>
+                            <span class="tag primary">Enemy AI (FSM)</span>
+                            <span class="tag">Rigidbody Physics</span>
+                            <span class="tag">Scene Management</span>
+                            <span class="tag">Animation System</span>
+                            <span class="tag">Scriptable Object</span>
+                            <span class="tag">Audio Integration</span>
+                            <span class="tag">Game Balancing</span>
+                        </div>
+                    </article>
+
+                    <!-- Tools -->
+                    <article class="skill-module">
+                        <header class="skill-module-head">
+                            <div class="skill-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <div>
+                                <span class="module-code">MOD_03</span>
+                                <h3>Tools &amp; Pipeline</h3>
+                            </div>
+                        </header>
+                        <div class="skill-tags">
+                            <span class="tag primary">Unity Hub</span>
+                            <span class="tag primary">FMOD</span>
+                            <span class="tag">Visual Studio</span>
+                            <span class="tag">Git</span>
+                            <span class="tag">GitHub Desktop</span>
+                            <span class="tag">Blender</span>
+                            <span class="tag">Aseprite</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">Photoshop</span>
+                        </div>
+                    </article>
+
+                    <!-- Workflow & Soft Skills -->
+                    <article class="skill-module">
+                        <header class="skill-module-head">
+                            <div class="skill-icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+                            </div>
+                            <div>
+                                <span class="module-code">MOD_04</span>
+                                <h3>Workflow &amp; Collaboration</h3>
+                            </div>
+                        </header>
+                        <div class="skill-tags">
+                            <span class="tag">Git Flow</span>
+                            <span class="tag">Merge Conflict Resolution</span>
+                            <span class="tag">Rapid Prototyping</span>
+                            <span class="tag">Debugging</span>
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">Trello</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Fast Learner</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-cta-band reveal">
+                <div>
+                    <span class="section-eyebrow">OPEN FOR COLLABORATION &amp; ROLES</span>
+                    <h2>Have a game or system worth building?</h2>
+                </div>
+                <div class="footer-cta-actions">
+                    <a href="mailto:hikari32yafi@gmail.com" class="btn btn-primary">
+                        <span>hikari32yafi@gmail.com</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-brand">
+                    <span class="brand-mark" aria-hidden="true"></span>
+                    <span>Hikari Aufa Yafi</span>
+                    <span class="footer-sep">·</span>
+                    <span class="footer-copy">© 2026</span>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="https://github.com/Hikariyafi35" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub ↗</a>
+                    <a href="https://linkedin.com/in/hikariaufa" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn ↗</a>
+                    <a href="https://hikariyafi35.itch.io/" target="_blank" rel="noopener noreferrer" aria-label="Itch.io">Itch.io ↗</a>
+                    <a href="https://www.instagram.com/hikariyfi/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram ↗</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PROJECT INSPECTOR MODAL -->
+    <div class="modal-backdrop" id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-panel" tabindex="-1">
+            <div class="modal-topbar">
+                <div class="modal-meta-id">
+                    <span class="inspector-cube" aria-hidden="true"></span>
+                    <span id="modal-index">PROJECT // #01</span>
+                </div>
+                <div class="modal-nav-controls">
+                    <button type="button" class="modal-icon-btn" id="modal-prev" aria-label="Previous project" title="Previous (←)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+                    <button type="button" class="modal-icon-btn" id="modal-next" aria-label="Next project" title="Next (→)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                    <button type="button" class="modal-icon-btn modal-close" id="modal-close" aria-label="Close inspector" title="Close (Esc)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body" id="modal-body">
+                <!-- Populated dynamically by script.js -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script/script.js"></script>
+</body>
 </html>
