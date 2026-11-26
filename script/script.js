@@ -11,10 +11,10 @@ const projects = [
         category: "Arcade & Narrative",
         role: "Gameplay Programmer",
         platform: "Itch.io",
-        studio: "ICW Sayembara Game 2026",
+        studio: "Tim Garde · ICW Sayembara Gim 2026",
         award: "2nd Place · ICW Sayembara Gim 2026",
         desc: "2nd Place Winner at ICW Sayembara Game Competition — review reports and resolve climate corruption conflicts in Indonesia.",
-        details: "Awarded 2nd Place at the ICW Sayembara Game Competition (End Climate Corruption 2026). Developed a 2D narrative game centered on corruption and environmental issues set in Indonesia — implementing Scriptable Objects to manage reports and dialogue alongside a multiple-ending system driven by the player's cumulative choice score.",
+        details: "Awarded 2nd Place (Tim Garde — \"Nature's Ration\") at the ICW Sayembara Game Development End Climate Corruption 2026. Developed a 2D narrative game centered on corruption and environmental issues set in Indonesia — implementing Scriptable Objects to manage reports and dialogue alongside a multiple-ending system driven by the player's cumulative choice score.",
         tags: ["Scriptable Objects", "Multiple Endings", "Dialogue System", "Unity 2D"],
         image: "img/natureration.png",
         link: "https://hikariyafi35.itch.io/government-simulator",
@@ -39,6 +39,23 @@ const projects = [
         squareFit: false
     },
     {
+        id: "bladenspell",
+        title: "BladeNSpell",
+        genre: "Bullet Heaven",
+        category: "Action & Combat",
+        role: "Game Developer",
+        platform: "Itch.io",
+        studio: "Intsys Lab · Udinus Internship",
+        award: null,
+        desc: "2D musou hack-and-slash survival game — strategically select spells, survive enemy waves, and defeat bosses.",
+        details: "Internship project at Intsys Lab, Universitas Dian Nuswantoro. Developed a 2D musou hack-and-slash survival game where players strategically pick spells to survive escalating waves and achieve high scores. Built core gameplay mechanics, enemy AI, wave spawning systems, UI/UX, and itch.io asset integration.",
+        tags: ["Musou Survival", "Wave Spawner", "Enemy AI", "Spell Progression"],
+        image: "img/BladeNSpel.png",
+        link: "https://geniuscion-studio.itch.io/bladenspell",
+        featured: true,
+        squareFit: false
+    },
+    {
         id: "the-unworn",
         title: "The Unworn",
         genre: "3D Platformer",
@@ -56,20 +73,20 @@ const projects = [
         squareFit: true
     },
     {
-        id: "bladenspell",
-        title: "BladeNSpell",
-        genre: "Bullet Heaven",
+        id: "bob-the-knight",
+        title: "Bob The Knight",
+        genre: "Turn-Based",
         category: "Action & Combat",
-        role: "Game Developer",
+        role: "Game Programmer",
         platform: "Itch.io",
-        studio: "Intsys Lab · Udinus Internship",
+        studio: "Solo Prototype",
         award: null,
-        desc: "2D musou hack-and-slash survival game — strategically select spells, survive enemy waves, and defeat bosses.",
-        details: "Internship project at Intsys Lab, Universitas Dian Nuswantoro. Developed a 2D musou hack-and-slash survival game where players strategically pick spells to survive escalating waves and achieve high scores. Built core gameplay mechanics, enemy AI, wave spawning systems, UI/UX, and itch.io asset integration.",
-        tags: ["Musou Survival", "Wave Spawner", "Enemy AI", "Spell Progression"],
-        image: "img/BladeNSpel.png",
-        link: "https://geniuscion-studio.itch.io/bladenspell",
-        featured: false,
+        desc: "2D turn-based RPG prototype with state-driven combat, world exploration, and keyboard UI navigation.",
+        details: "Developed a 2D turn-based RPG prototype in Unity and C#. Implemented a state machine-based battle system, enemy AI, world map exploration, scene transitions, NPC movement, and full keyboard navigation using Unity's Event System.",
+        tags: ["Turn-Based FSM", "World Exploration", "Unity Event System"],
+        image: "img/bob.png",
+        link: "https://hikariyafi35.itch.io/bob-the-knight",
+        featured: true,
         squareFit: false
     },
     {
@@ -120,23 +137,6 @@ const projects = [
         tags: ["FSM Enemy AI", "NavMesh Navigation", "Energy Buffs"],
         image: "img/EscapeWarehouseEdition.jpg",
         link: "https://geniuscion-studio.itch.io/escape",
-        featured: false,
-        squareFit: false
-    },
-    {
-        id: "bob-the-knight",
-        title: "Bob The Knight",
-        genre: "Turn-Based",
-        category: "Action & Combat",
-        role: "Game Programmer",
-        platform: "Itch.io",
-        studio: "Solo Prototype",
-        award: null,
-        desc: "2D turn-based RPG prototype with state-driven combat, world exploration, and keyboard UI navigation.",
-        details: "Developed a 2D turn-based RPG prototype in Unity and C#. Implemented a state machine-based battle system, enemy AI, world map exploration, scene transitions, NPC movement, and full keyboard navigation using Unity's Event System.",
-        tags: ["Turn-Based FSM", "World Exploration", "Unity Event System"],
-        image: "img/bob.png",
-        link: "https://hikariyafi35.itch.io/bob-the-knight",
         featured: false,
         squareFit: false
     },
@@ -361,14 +361,14 @@ const certificates = [
     },
     {
         id: "icw-sayembara-2026",
-        title: "2nd Place — Sayembara Game Competition (End Climate Corruption)",
-        issuer: "Indonesia Corruption Watch (ICW)",
+        title: "Juara 2 — Sayembara Game Development End Climate Corruption",
+        issuer: "Indonesia Corruption Watch (ICW) × The Lazy Monday",
         category: "Awards & Events",
         date: "2026",
         badge: "2ND PLACE AWARD",
         flagship: true,
-        credentialId: "Winning Title: Natureration",
-        note: "Awarded 2nd Place in the national Games Against #ClimateCorruption development competition with Natureration — a 2D narrative game tackling climate corruption in Indonesia.",
+        credentialId: "Tim Garde · \"Nature's Ration\"",
+        note: "Piagam Penghargaan Juara 2 diberikan kepada Tim Garde untuk karya game \"Nature's Ration\" (Natureration) pada Sayembara Game Development End Climate Corruption.",
         image: "img/certs/icw-sayembara-2026.jpg",
         pdf: null,
         verifyUrl: "https://hikariyafi35.itch.io/government-simulator"
@@ -429,90 +429,6 @@ const certificates = [
         image: "img/certs/dncc-btng-2023.jpg",
         pdf: null,
         verifyUrl: null
-    },
-    {
-        id: "cflt-english-2025",
-        title: "English Proficiency Assessment — Score 473",
-        issuer: "CFLT · Universitas Dian Nuswantoro",
-        category: "Language",
-        date: "Jan 2025 – Jan 2027",
-        badge: "SCORE 473",
-        flagship: false,
-        credentialId: "CFLT-20250114-OL00459",
-        note: "Certified English Proficiency Assessment by Center for Foreign Language Training Udinus (Listening 47 · Structure & Written Expression 49 · Reading 46).",
-        image: "img/certs/cflt-english-udinus.png",
-        pdf: "certs/cflt-english-udinus.pdf",
-        verifyUrl: null
-    },
-    {
-        id: "udemy-unity-3d",
-        title: "Complete C# Unity Game Developer 3D",
-        issuer: "Udemy",
-        category: "Game Dev & Unity",
-        date: "2023",
-        badge: "COURSE",
-        flagship: false,
-        credentialId: "CV Credential",
-        note: "End-to-end 3D Unity course covering C# scripting, Rigidbody physics, Cinemachine cameras, lighting, post-processing, and multiple playable 3D projects.",
-        image: null,
-        pdf: null,
-        verifyUrl: null
-    },
-    {
-        id: "dicoding-web",
-        title: "Belajar Dasar Pemrograman Web",
-        issuer: "Dicoding Indonesia",
-        category: "Web & Cloud",
-        date: "Verified on CV",
-        badge: "WEB DEV",
-        flagship: false,
-        credentialId: "Dicoding Credential",
-        note: "Core semantic HTML, CSS layout systems, and responsive web fundamentals.",
-        image: null,
-        pdf: null,
-        verifyUrl: null
-    },
-    {
-        id: "dicoding-js",
-        title: "Belajar Dasar Pemrograman JavaScript",
-        issuer: "Dicoding Indonesia",
-        category: "Web & Cloud",
-        date: "Verified on CV",
-        badge: "JAVASCRIPT",
-        flagship: false,
-        credentialId: "Dicoding Credential",
-        note: "Modern JavaScript programming fundamentals, asynchronous logic, OOP, and functional patterns.",
-        image: null,
-        pdf: null,
-        verifyUrl: null
-    },
-    {
-        id: "dicoding-backend",
-        title: "Belajar Membuat Aplikasi Back-End untuk Pemula",
-        issuer: "Dicoding Indonesia",
-        category: "Web & Cloud",
-        date: "Verified on CV",
-        badge: "BACK-END",
-        flagship: false,
-        credentialId: "Dicoding Credential",
-        note: "RESTful API architecture, Node.js server development, routing, and deployment basics.",
-        image: null,
-        pdf: null,
-        verifyUrl: null
-    },
-    {
-        id: "dicoding-aws",
-        title: "Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)",
-        issuer: "Dicoding Indonesia",
-        category: "Web & Cloud",
-        date: "Verified on CV",
-        badge: "AWS CLOUD",
-        flagship: false,
-        credentialId: "Dicoding Credential",
-        note: "Foundational cloud architecture, security, pricing, and core AWS infrastructure services.",
-        image: null,
-        pdf: null,
-        verifyUrl: null
     }
 ];
 
@@ -534,7 +450,7 @@ const state = {
 
 const featuredProjects = projects.filter((p) => p.featured);
 const categories = ["All", "Puzzle", "Action & Combat", "Platformer", "Arcade & Narrative"];
-const certCategories = ["All", "Game Dev & Unity", "Awards & Events", "Web & Cloud", "Language"];
+const certCategories = ["All", "Game Dev & Unity", "Awards & Events"];
 
 /* --------------------------------------------------------------------------
    DOM REFERENCES
