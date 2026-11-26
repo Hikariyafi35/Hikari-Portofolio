@@ -9,13 +9,13 @@
     <!-- Fonts: Space Grotesk (Display), Plus Jakarta Sans (Body), JetBrains Mono (Technical) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-    <!-- Subtle Blueprint Grid Overlay -->
+    <!-- Subtle Blueprint Grid + Tactical Scanlines -->
     <div class="bg-grid" aria-hidden="true"></div>
 
     <!-- Top Scroll Progress Hairline -->
@@ -38,6 +38,11 @@
             </nav>
 
             <div class="nav-actions">
+                <button type="button" class="sfx-toggle" id="sfx-toggle" aria-pressed="false" title="Toggle Procedural Game SFX">
+                    <svg class="sfx-icon-off" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" x2="16" y1="9" y2="15"/><line x1="16" x2="22" y1="9" y2="15"/></svg>
+                    <svg class="sfx-icon-on" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                    <span class="sfx-label">SFX: OFF</span>
+                </button>
                 <a href="mailto:hikari32yafi@gmail.com" class="nav-cta">
                     <span>Get in Touch</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
@@ -70,13 +75,22 @@
     </div>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION: IDENTITY + LIVE PLAYABLE FSM SANDBOX -->
         <section id="hero" class="hero">
             <div class="container hero-layout">
                 <div class="hero-copy">
-                    <div class="status-pill reveal">
-                        <span class="status-dot" aria-hidden="true"></span>
-                        <span>UNITY GAMEPLAY PROGRAMMER · INDONESIA</span>
+                    <!-- Compact Pixel-Art Avatar + Unity Certified Identity Strip -->
+                    <div class="dev-id-card reveal">
+                        <div class="dev-avatar-frame">
+                            <img src="img/profile.png" alt="Pixel art portrait of Hikari Aufa" />
+                        </div>
+                        <div class="dev-id-meta">
+                            <div class="status-inline">
+                                <span class="status-dot" aria-hidden="true"></span>
+                                <span>UNITY GAMEPLAY PROGRAMMER · ID</span>
+                            </div>
+                            <div class="dev-id-sub">Unity Certified Associate · B.Sc. Informatics (GPA 3.67)</div>
+                        </div>
                     </div>
 
                     <h1 class="hero-title reveal">
@@ -85,7 +99,7 @@
                     </h1>
 
                     <p class="hero-lead reveal">
-                        Unity Gameplay Programmer &amp; Unity Certified Associate with a Bachelor's degree in Informatics Engineering. Crafting responsive character controllers, FSM enemy AI, Scriptable Object architectures, and synchronized FMOD audio in Unity &amp; C#.
+                        Gameplay programmer crafting responsive character controllers, Finite State Machine (FSM) enemy AI, Scriptable Object architectures, and synchronized FMOD audio in Unity &amp; C#. Try the live FSM combat sandbox on the right — click or press <code>WASD</code> to take control.
                     </p>
 
                     <div class="hero-actions reveal">
@@ -134,42 +148,63 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Dev Inspector Character Card -->
-                <aside class="hero-inspector reveal" id="hero-inspector" aria-label="Developer Profile Inspector">
-                    <div class="inspector-chrome">
-                        <div class="inspector-title">
+                <!-- Right Column: LIVE PLAYABLE UNITY-STYLE FSM SANDBOX VIEWPORT -->
+                <aside class="engine-viewport-shell reveal" aria-label="Interactive Gameplay & FSM AI Sandbox">
+                    <div class="engine-topbar">
+                        <div class="engine-tab-title">
                             <span class="inspector-cube" aria-hidden="true"></span>
-                            <span>HikariAufa.prefab</span>
+                            <span>FSM_CombatSandbox.scene</span>
                         </div>
-                        <span class="inspector-badge">UNITY CERTIFIED</span>
+                        <div class="engine-telemetry">
+                            <span class="telemetry-pill" id="sb-score">KO: 0</span>
+                            <span class="telemetry-pill" id="sb-fps">60 FPS</span>
+                            <span class="telemetry-mode" id="sb-mode-badge">AUTO_DEMO</span>
+                        </div>
                     </div>
 
-                    <div class="inspector-viewport">
+                    <div class="engine-toolbar">
+                        <div class="engine-btn-group">
+                            <button type="button" class="eng-btn" id="sb-play-pause">⏸ Pause</button>
+                            <button type="button" class="eng-btn" id="sb-auto-toggle">Take Control</button>
+                            <button type="button" class="eng-btn active" id="sb-gizmo-toggle">Gizmos: ON</button>
+                        </div>
+                        <div class="engine-btn-group">
+                            <button type="button" class="eng-btn" id="sb-spawn" title="Spawn FSM Enemy">+ Enemy</button>
+                            <button type="button" class="eng-btn" id="sb-reset" title="Reset Arena">↻ Reset</button>
+                        </div>
+                    </div>
+
+                    <div class="sandbox-stage">
                         <span class="corner tl" aria-hidden="true"></span>
                         <span class="corner tr" aria-hidden="true"></span>
                         <span class="corner bl" aria-hidden="true"></span>
                         <span class="corner br" aria-hidden="true"></span>
-                        <div class="viewport-bg-glow" aria-hidden="true"></div>
-                        <img src="img/profile.png" alt="Pixel art portrait of Hikari Aufa" class="portrait-img" />
-                        <div class="viewport-hud">
-                            <span>SPRITE // 600×600</span>
-                            <span>IDLE_STANCE</span>
+                        <canvas id="sandbox-canvas" aria-label="Playable 2D combat and Finite State Machine AI demo"></canvas>
+                        <div class="sandbox-controls-hint" aria-hidden="true">
+                            <span><kbd>WASD</kbd> Move</span>
+                            <span><kbd>Click</kbd> Shoot</span>
+                            <span><kbd>Space</kbd> Dash</span>
                         </div>
                     </div>
 
-                    <div class="inspector-props">
-                        <div class="prop-row">
-                            <span class="prop-key">Role</span>
-                            <span class="prop-val accent">Unity Gameplay Programmer</span>
-                        </div>
-                        <div class="prop-row">
-                            <span class="prop-key">Credential</span>
-                            <span class="prop-val">Unity Certified Associate</span>
-                        </div>
-                        <div class="prop-row">
-                            <span class="prop-key">Base</span>
-                            <span class="prop-val">Kendal, Central Java, ID</span>
-                        </div>
+                    <!-- Live Unity-Style Parameter Inspector -->
+                    <div class="engine-inspector-bar">
+                        <label class="inspector-slider">
+                            <span>MoveSpeed</span>
+                            <input type="range" id="sb-speed" min="140" max="360" step="5" value="235" />
+                            <strong id="sb-speed-val">235</strong>
+                        </label>
+                        <label class="inspector-slider">
+                            <span>GameJuice</span>
+                            <input type="range" id="sb-juice" min="0" max="100" step="5" value="85" />
+                            <strong id="sb-juice-val">85%</strong>
+                        </label>
+                    </div>
+
+                    <!-- Live Console Output -->
+                    <div class="engine-console">
+                        <span class="console-prefix">CONSOLE &gt;</span>
+                        <span class="console-msg" id="sb-console">Initializing FSM agents...</span>
                     </div>
                 </aside>
             </div>
@@ -188,9 +223,9 @@
                     </p>
                 </div>
 
-                <!-- Featured Spotlight Switcher -->
+                <!-- Featured Spotlight Switcher (5 Selected Projects) -->
                 <div class="spotlight-shell reveal" aria-label="Featured Projects Spotlight">
-                    <div class="spotlight-tabs" id="spotlight-tabs" role="tablist" aria-label="Featured Games">
+                    <div class="spotlight-tabs" id="spotlight-tabs" role="tablist" aria-label="Selected Featured Games">
                         <!-- Rendered by JS -->
                     </div>
                     <div class="spotlight-stage" id="spotlight-stage">
@@ -223,7 +258,7 @@
 
                 <div class="explorer-meta">
                     <span id="project-count">Showing 13 of 13 titles</span>
-                    <span class="explorer-hint">Tip: Click any card to inspect · Use ← → keys inside modal</span>
+                    <span class="explorer-hint">Tip: Click any cartridge to inspect · Use ← → keys inside modal</span>
                 </div>
 
                 <!-- Dynamic Project Grid / Archive List -->
@@ -236,7 +271,7 @@
             <div class="container">
                 <div class="section-header reveal">
                     <div>
-                        <span class="section-eyebrow">02 // TRACK RECORD</span>
+                        <span class="section-eyebrow">02 // QUEST LOG &amp; TRACK RECORD</span>
                         <h2 class="section-heading">Experience &amp; Training</h2>
                     </div>
                     <p class="section-sub">
@@ -260,7 +295,7 @@
             <div class="container">
                 <div class="section-header reveal">
                     <div>
-                        <span class="section-eyebrow">03 // CREDENTIALS &amp; HONORS</span>
+                        <span class="section-eyebrow">03 // ACHIEVEMENTS &amp; CREDENTIALS</span>
                         <h2 class="section-heading">Certificates &amp; Recognition</h2>
                     </div>
                     <p class="section-sub">
@@ -286,7 +321,7 @@
             <div class="container">
                 <div class="section-header reveal">
                     <div>
-                        <span class="section-eyebrow">04 // PROFILE</span>
+                        <span class="section-eyebrow">04 // CHARACTER SHEET</span>
                         <h2 class="section-heading">About Hikari</h2>
                     </div>
                 </div>
@@ -351,7 +386,7 @@
             </div>
         </section>
 
-        <!-- SECTION 05: TOOLKIT & SKILLS -->
+        <!-- SECTION 05: TOOLKIT & SKILLS (WITH INTERACTIVE PROJECT CROSS-LINKING) -->
         <section id="skills" class="section skills-section">
             <div class="container">
                 <div class="section-header reveal">
@@ -360,7 +395,7 @@
                         <h2 class="section-heading">Technical Stack</h2>
                     </div>
                     <p class="section-sub">
-                        Languages, Unity subsystems, audio &amp; art pipelines, and collaborative workflows I ship games with.
+                        Languages, Unity subsystems, audio &amp; art pipelines, and workflows I ship games with. Click any highlighted subsystem tag to filter matching projects.
                     </p>
                 </div>
 
@@ -377,7 +412,7 @@
                             </div>
                         </header>
                         <div class="skill-tags">
-                            <span class="tag primary">C#</span>
+                            <button type="button" class="tag primary interactive-skill" data-skill-query="Unity">C# ↗</button>
                             <span class="tag">JavaScript</span>
                             <span class="tag">HTML</span>
                             <span class="tag">CSS</span>
@@ -397,17 +432,17 @@
                             </div>
                         </header>
                         <div class="skill-tags">
-                            <span class="tag primary">Unity (2D &amp; 3D)</span>
-                            <span class="tag primary">Gameplay Programming</span>
-                            <span class="tag primary">Enemy AI (FSM &amp; NavMesh)</span>
-                            <span class="tag primary">Scriptable Objects</span>
-                            <span class="tag">Rigidbody Physics</span>
+                            <button type="button" class="tag primary interactive-skill" data-skill-query="Unity">Unity (2D &amp; 3D) ↗</button>
+                            <button type="button" class="tag primary interactive-skill" data-skill-query="Combat">Gameplay &amp; Combat ↗</button>
+                            <button type="button" class="tag primary interactive-skill" data-skill-query="FSM">Enemy AI (FSM &amp; NavMesh) ↗</button>
+                            <button type="button" class="tag primary interactive-skill" data-skill-query="Scriptable">Scriptable Objects ↗</button>
+                            <button type="button" class="tag interactive-skill" data-skill-query="Physics">Rigidbody Physics ↗</button>
                             <span class="tag">Cinemachine</span>
-                            <span class="tag">Scene &amp; Save Management</span>
+                            <button type="button" class="tag interactive-skill" data-skill-query="Scene">Scene &amp; Save Management ↗</button>
                             <span class="tag">Animation &amp; VFX</span>
                             <span class="tag">Audio Integration (FMOD)</span>
-                            <span class="tag">Fungus Dialogue</span>
-                            <span class="tag">WebGL &amp; Android Porting</span>
+                            <button type="button" class="tag interactive-skill" data-skill-query="Fungus">Fungus Dialogue ↗</button>
+                            <button type="button" class="tag interactive-skill" data-skill-query="WebGL">WebGL &amp; Android Porting ↗</button>
                             <span class="tag">Game Balancing</span>
                         </div>
                     </article>
@@ -465,7 +500,7 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER WITH PIXEL COMPANION EASTER EGG -->
     <footer class="footer">
         <div class="container">
             <div class="footer-cta-band reveal">
@@ -478,6 +513,22 @@
                         <span>hikari32yafi@gmail.com</span>
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                     </a>
+                </div>
+            </div>
+
+            <!-- Interactive 8-bit Pixel Companion Strip -->
+            <div class="companion-bar reveal">
+                <button type="button" class="companion-trigger" id="companion-btn" aria-label="Interact with pixel companion">
+                    <img src="img/Hollow Knight 8Bit Sticker.gif" alt="8-bit pixel companion" class="companion-sprite" />
+                    <div class="companion-bubble">
+                        <span class="companion-tag">DEV_COMPANION // CLICK ME</span>
+                        <span class="companion-text" id="companion-text">Try pressing WASD or clicking inside the Hero arena to play with the FSM enemies!</span>
+                    </div>
+                </button>
+                <div class="engine-build-stamp">
+                    <span>KEYS: <kbd>1</kbd>–<kbd>5</kbd> Jump Sections</span>
+                    <span>·</span>
+                    <span>BUILD v2026</span>
                 </div>
             </div>
 
@@ -526,6 +577,9 @@
         </div>
     </div>
 
+    <!-- Modular Game Engine & Portfolio Scripts -->
+    <script src="script/sfx.js"></script>
+    <script src="script/sandbox.js"></script>
     <script src="script/script.js"></script>
 </body>
 </html>

@@ -555,6 +555,7 @@ function renderSpotlightTabs() {
         btn.addEventListener("click", () => {
             state.spotlightIndex = Number(btn.dataset.spotlight);
             renderSpotlight();
+            if (window.GameSFX) window.GameSFX.tab();
         });
     });
 }
@@ -635,6 +636,7 @@ function renderFilters() {
             state.activeCategory = btn.dataset.cat;
             renderFilters();
             renderProjects();
+            if (window.GameSFX) window.GameSFX.click();
         });
     });
 }
@@ -730,6 +732,8 @@ function renderProjects() {
                 openCurrent();
             }
         });
+
+        attachCardFeel(card);
     });
 }
 
@@ -758,6 +762,7 @@ function renderCertFilters() {
             state.activeCertCategory = btn.dataset.certCat;
             renderCertFilters();
             renderCertificates();
+            if (window.GameSFX) window.GameSFX.click();
         });
     });
 }
@@ -839,6 +844,8 @@ function renderCertificates() {
                 openCert();
             }
         });
+
+        attachCardFeel(card);
     });
 }
 
@@ -991,6 +998,7 @@ function openModal(mode, list, index) {
     modalEl.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
     modalPanelEl.focus();
+    if (window.GameSFX) window.GameSFX.modalOpen();
 }
 
 function closeModal() {
@@ -1002,6 +1010,7 @@ function closeModal() {
     if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === "function") {
         lastFocusedBeforeModal.focus();
     }
+    if (window.GameSFX) window.GameSFX.modalClose();
 }
 
 function stepModal(delta) {
@@ -1010,6 +1019,7 @@ function stepModal(delta) {
     state.modalIndex = (state.modalIndex + delta + len) % len;
     renderModalContent();
     modalBodyEl.scrollTop = 0;
+    if (window.GameSFX) window.GameSFX.tab();
 }
 
 modalCloseBtn.addEventListener("click", closeModal);
@@ -1053,6 +1063,7 @@ function renderExperience() {
         btn.addEventListener("click", () => {
             state.activeExpId = btn.dataset.expId;
             renderExperience();
+            if (window.GameSFX) window.GameSFX.tab();
         });
     });
 
@@ -1131,22 +1142,105 @@ if (copyEmailBtn) {
 }
 
 /* --------------------------------------------------------------------------
-   SUBTLE INSPECTOR CARD POINTER TILT (DESKTOP ONLY)
+   TACTILE CARTRIDGE GLARE & SUBTLE 3D TILT (DESKTOP POINTER ONLY)
    -------------------------------------------------------------------------- */
-const inspectorCard = document.getElementById("hero-inspector");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (inspectorCard && !prefersReducedMotion && window.matchMedia("(pointer: fine)").matches) {
-    inspectorCard.addEventListener("mousemove", (e) => {
-        const rect = inspectorCard.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        inspectorCard.style.transform = `perspective(900px) rotateX(${(-y * 5).toFixed(2)}deg) rotateY(${(x * 5).toFixed(2)}deg)`;
+const finePointer = window.matchMedia("(pointer: fine)").matches;
+
+function attachCardFeel(card) {
+    if (prefersReducedMotion || !finePointer) return;
+    card.addEventListener("mousemove", (e) => {
+        if (projectGridEl.dataset.view === "list" && card.classList.contains("project-card")) return;
+        const rect = card.getBoundingClientRect();
+        const px = ((e.clientX - rect.left) / rect.width) * 100;
+        const py = ((e.clientY - rect.top) / rect.height) * 100;
+        card.style.setProperty("--mx", `${px.toFixed(1)}%`);
+        card.style.setProperty("--my", `${py.toFixed(1)}%`);
+        const rx = ((py - 50) / 50) * -2.6;
+        const ry = ((px - 50) / 50) * 2.6;
+        card.style.transform = `perspective(900px) translateY(-4px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg)`;
     });
 
-    inspectorCard.addEventListener("mouseleave", () => {
-        inspectorCard.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
     });
 }
+
+/* --------------------------------------------------------------------------
+   PROCEDURAL SFX TOGGLE + SKILL CROSS-LINKING + PIXEL COMPANION + HOTKEYS
+   -------------------------------------------------------------------------- */
+const sfxToggleBtn = document.getElementById("sfx-toggle");
+if (sfxToggleBtn && window.GameSFX) {
+    const sfxLabel = sfxToggleBtn.querySelector(".sfx-label");
+    sfxToggleBtn.addEventListener("click", () => {
+        const on = window.GameSFX.toggle();
+        sfxToggleBtn.classList.toggle("is-on", on);
+        sfxToggleBtn.setAttribute("aria-pressed", String(on));
+        if (sfxLabel) sfxLabel.textContent = on ? "SFX: ON" : "SFX: OFF";
+    });
+}
+
+// Interactive Skill Tags -> Filter Projects & Scroll
+document.querySelectorAll(".interactive-skill").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const query = btn.dataset.skillQuery || "";
+        state.activeCategory = "All";
+        state.searchQuery = query;
+        searchInputEl.value = query;
+        renderFilters();
+        renderProjects();
+        if (window.GameSFX) window.GameSFX.tab();
+        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+// Pixel Companion Easter Egg
+const companionBtn = document.getElementById("companion-btn");
+const companionText = document.getElementById("companion-text");
+if (companionBtn && companionText) {
+    const companionLines = [
+        "Try pressing WASD or clicking inside the Hero arena to play with the FSM enemies!",
+        "Toggle Gizmos ON/OFF and tweak GameJuice in the Hero viewport to feel hitstop & screen shake!",
+        "Natureration (Tim Garde) won 2nd Place at ICW Sayembara Game Development 2026!",
+        "Click any highlighted subsystem in Technical Stack to filter matching games automatically.",
+        "Pro tip: Enable SFX in the top bar for live synthesized Web Audio game sounds!"
+    ];
+    let lineIdx = 0;
+    companionBtn.addEventListener("click", () => {
+        lineIdx = (lineIdx + 1) % companionLines.length;
+        companionText.textContent = companionLines[lineIdx];
+        if (window.GameSFX) {
+            if (!window.GameSFX.isEnabled()) {
+                window.GameSFX.setEnabled(true);
+                sfxToggleBtn?.classList.add("is-on");
+                sfxToggleBtn?.setAttribute("aria-pressed", "true");
+                const lbl = sfxToggleBtn?.querySelector(".sfx-label");
+                if (lbl) lbl.textContent = "SFX: ON";
+            } else {
+                window.GameSFX.chime();
+            }
+        }
+    });
+}
+
+// Keyboard Quick Section Jump (Keys 1 - 5)
+const sectionHotkeys = {
+    "1": "projects",
+    "2": "experience",
+    "3": "certificates",
+    "4": "biodata",
+    "5": "skills"
+};
+document.addEventListener("keydown", (e) => {
+    const tag = document.activeElement?.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || state.modalOpen) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const targetId = sectionHotkeys[e.key];
+    if (targetId) {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: "smooth" });
+        if (window.GameSFX) window.GameSFX.tick();
+    }
+});
 
 /* --------------------------------------------------------------------------
    SCROLL PROGRESS, STICKY NAV, SCROLL SPY & REVEAL
