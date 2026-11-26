@@ -33,7 +33,8 @@
         showGizmos: true,
         playerSpeed: 235,
         juice: 0.85,
-        inViewport: true
+        inViewport: true,
+        sceneActive: true
     };
 
     let width = 560;
@@ -856,7 +857,7 @@
 
     function loop(now) {
         requestAnimationFrame(loop);
-        if (!config.inViewport) {
+        if (!config.inViewport || !config.sceneActive) {
             lastTime = now;
             return;
         }
@@ -934,6 +935,7 @@
     });
 
     window.addEventListener("keydown", (e) => {
+        if (!config.sceneActive) return;
         const tag = document.activeElement?.tagName;
         if (tag === "INPUT" || tag === "TEXTAREA" || document.body.classList.contains("modal-open")) return;
 
@@ -1033,4 +1035,14 @@
     resize();
     resetArena();
     requestAnimationFrame(loop);
+
+    window.FSMSandbox = {
+        setActive(active) {
+            config.sceneActive = Boolean(active);
+            if (active) {
+                resize();
+                updateHUD();
+            }
+        }
+    };
 })();

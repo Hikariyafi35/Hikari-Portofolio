@@ -156,21 +156,48 @@
                     </div>
                 </div>
 
-                <!-- Right Column: LIVE PLAYABLE UNITY-STYLE FSM SANDBOX VIEWPORT -->
-                <aside class="engine-viewport-shell reveal" aria-label="Interactive Gameplay & FSM AI Sandbox">
+                <!-- Right Column: MULTI-SCENE PLAYABLE UNITY-STYLE ENGINE VIEWPORT -->
+                <aside class="engine-viewport-shell reveal" aria-label="Multi-Scene Interactive Gameplay Sandbox">
+                    <!-- Scene Switcher Tabs -->
+                    <div class="scene-switcher" role="tablist" aria-label="Interactive Engine Scenes">
+                        <button type="button" class="scene-tab-btn active" data-scene="fsm" role="tab" aria-selected="true">
+                            <span class="scene-num">01</span>
+                            <span>FSM_Combat</span>
+                        </button>
+                        <button type="button" class="scene-tab-btn" data-scene="pathfinding" role="tab" aria-selected="false">
+                            <span class="scene-num">02</span>
+                            <span>Pathfinding_NavGrid</span>
+                        </button>
+                        <button type="button" class="scene-tab-btn" data-scene="narrative" role="tab" aria-selected="false">
+                            <span class="scene-num">03</span>
+                            <span>Narrative_Choice</span>
+                        </button>
+                    </div>
+
                     <div class="engine-topbar">
                         <div class="engine-tab-title">
                             <span class="inspector-cube" aria-hidden="true"></span>
-                            <span>FSM_CombatSandbox.scene</span>
+                            <span id="engine-scene-title">FSM_Combat.scene</span>
                         </div>
-                        <div class="engine-telemetry">
+
+                        <!-- Telemetry per scene -->
+                        <div class="engine-telemetry" id="telemetry-fsm">
                             <span class="telemetry-pill" id="sb-score">KO: 0</span>
                             <span class="telemetry-pill" id="sb-fps">60 FPS</span>
                             <span class="telemetry-mode" id="sb-mode-badge">AUTO_DEMO</span>
                         </div>
+                        <div class="engine-telemetry" id="telemetry-path" hidden>
+                            <span class="telemetry-pill">A* HEURISTIC</span>
+                            <span class="telemetry-mode" id="pf-status-badge">PATH: 0 STEPS</span>
+                        </div>
+                        <div class="engine-telemetry" id="telemetry-narrative" hidden>
+                            <span class="telemetry-pill">SCRIPTABLE_OBJ</span>
+                            <span class="telemetry-mode" id="nar-step-badge">CASE 1 / 3</span>
+                        </div>
                     </div>
 
-                    <div class="engine-toolbar">
+                    <!-- SCENE 01 TOOLBAR: FSM COMBAT -->
+                    <div class="engine-toolbar" data-scene-panel="fsm">
                         <div class="engine-btn-group">
                             <button type="button" class="eng-btn" id="sb-play-pause">⏸ Pause</button>
                             <button type="button" class="eng-btn" id="sb-auto-toggle">Take Control</button>
@@ -182,7 +209,32 @@
                         </div>
                     </div>
 
-                    <div class="sandbox-stage">
+                    <!-- SCENE 02 TOOLBAR: PATHFINDING NAVGRID -->
+                    <div class="engine-toolbar" data-scene-panel="pathfinding" hidden>
+                        <div class="engine-btn-group">
+                            <button type="button" class="eng-btn active" data-pf-tool="wall">Wall Brush</button>
+                            <button type="button" class="eng-btn" data-pf-tool="goal">Move Goal</button>
+                            <button type="button" class="eng-btn" data-pf-tool="start">Move Start</button>
+                            <button type="button" class="eng-btn active" id="pf-diag-toggle">Diag: ON</button>
+                        </div>
+                        <div class="engine-btn-group">
+                            <button type="button" class="eng-btn" id="pf-maze">Preset</button>
+                            <button type="button" class="eng-btn" id="pf-clear">Clear</button>
+                        </div>
+                    </div>
+
+                    <!-- SCENE 03 TOOLBAR: NARRATIVE CHOICE -->
+                    <div class="engine-toolbar" data-scene-panel="narrative" hidden>
+                        <div class="engine-btn-group">
+                            <span class="eng-label">Inspired by Natureration · Cumulative Ending Resolver</span>
+                        </div>
+                        <div class="engine-btn-group">
+                            <button type="button" class="eng-btn" id="nar-replay">↻ Replay</button>
+                        </div>
+                    </div>
+
+                    <!-- VIEWPORT STAGE: SCENE 01 (FSM CANVAS) -->
+                    <div class="sandbox-stage" data-scene-panel="fsm">
                         <span class="corner tl" aria-hidden="true"></span>
                         <span class="corner tr" aria-hidden="true"></span>
                         <span class="corner bl" aria-hidden="true"></span>
@@ -195,8 +247,29 @@
                         </div>
                     </div>
 
-                    <!-- Live Unity-Style Parameter Inspector -->
-                    <div class="engine-inspector-bar">
+                    <!-- VIEWPORT STAGE: SCENE 02 (A* NAVGRID CANVAS) -->
+                    <div class="sandbox-stage" data-scene-panel="pathfinding" hidden>
+                        <span class="corner tl" aria-hidden="true"></span>
+                        <span class="corner tr" aria-hidden="true"></span>
+                        <span class="corner bl" aria-hidden="true"></span>
+                        <span class="corner br" aria-hidden="true"></span>
+                        <canvas id="path-canvas" aria-label="Interactive A* pathfinding obstacle grid"></canvas>
+                        <div class="sandbox-controls-hint" aria-hidden="true">
+                            <span><kbd>Drag</kbd> Draw / Erase Walls</span>
+                            <span><span class="legend-dot closed"></span>Closed</span>
+                            <span><span class="legend-dot open"></span>Open</span>
+                        </div>
+                    </div>
+
+                    <!-- VIEWPORT STAGE: SCENE 03 (NARRATIVE CHOICE INSPECTOR) -->
+                    <div class="sandbox-stage narrative-stage-wrap" data-scene-panel="narrative" hidden>
+                        <div class="narrative-stage" id="narrative-stage">
+                            <!-- Rendered by scenes.js -->
+                        </div>
+                    </div>
+
+                    <!-- SCENE 01 INSPECTOR BAR -->
+                    <div class="engine-inspector-bar" data-scene-panel="fsm">
                         <label class="inspector-slider">
                             <span>MoveSpeed</span>
                             <input type="range" id="sb-speed" min="140" max="360" step="5" value="235" />
@@ -207,6 +280,20 @@
                             <input type="range" id="sb-juice" min="0" max="100" step="5" value="85" />
                             <strong id="sb-juice-val">85%</strong>
                         </label>
+                    </div>
+
+                    <!-- SCENE 02 INSPECTOR BAR -->
+                    <div class="engine-inspector-bar engine-stats-3" data-scene-panel="pathfinding" hidden>
+                        <div class="inspector-readout"><span>Visited Nodes</span><strong id="pf-stat-visited">0</strong></div>
+                        <div class="inspector-readout"><span>Path Steps</span><strong id="pf-stat-steps">0</strong></div>
+                        <div class="inspector-readout"><span>Solve Time</span><strong id="pf-stat-time">0.00ms</strong></div>
+                    </div>
+
+                    <!-- SCENE 03 INSPECTOR BAR -->
+                    <div class="engine-inspector-bar engine-stats-3" data-scene-panel="narrative" hidden>
+                        <div class="inspector-readout"><span>EcoHealth</span><strong id="nar-stat-eco">50</strong></div>
+                        <div class="inspector-readout"><span>Integrity</span><strong id="nar-stat-int">50</strong></div>
+                        <div class="inspector-readout"><span>Pressure</span><strong id="nar-stat-prs">30</strong></div>
                     </div>
 
                     <!-- Live Console Output -->
@@ -588,6 +675,7 @@
     <!-- Modular Game Engine & Portfolio Scripts -->
     <script src="script/sfx.js"></script>
     <script src="script/sandbox.js"></script>
+    <script src="script/scenes.js"></script>
     <script src="script/script.js"></script>
 </body>
 </html>
