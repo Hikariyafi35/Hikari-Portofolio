@@ -1,9 +1,26 @@
 /* ==========================================================================
    HIKARI AUFA — PORTFOLIO INTERACTIVITY
-   Interactive Project Explorer, Spotlight, Inspector Modal & Experience Log
+   Projects Explorer, Spotlight, Experience Workbench & Certificate Inspector
    ========================================================================== */
 
 const projects = [
+    {
+        id: "natureration",
+        title: "Natureration",
+        genre: "Narrative 2D",
+        category: "Arcade & Narrative",
+        role: "Gameplay Programmer",
+        platform: "Itch.io",
+        studio: "ICW Sayembara Game 2026",
+        award: "2nd Place · ICW Sayembara Gim 2026",
+        desc: "2nd Place Winner at ICW Sayembara Game Competition — review reports and resolve climate corruption conflicts in Indonesia.",
+        details: "Awarded 2nd Place at the ICW Sayembara Game Competition (End Climate Corruption 2026). Developed a 2D narrative game centered on corruption and environmental issues set in Indonesia — implementing Scriptable Objects to manage reports and dialogue alongside a multiple-ending system driven by the player's cumulative choice score.",
+        tags: ["Scriptable Objects", "Multiple Endings", "Dialogue System", "Unity 2D"],
+        image: "img/natureration.png",
+        link: "https://hikariyafi35.itch.io/government-simulator",
+        featured: true,
+        squareFit: false
+    },
     {
         id: "dreamify",
         title: "Dreamify",
@@ -11,10 +28,11 @@ const projects = [
         category: "Puzzle",
         role: "Game Programmer",
         platform: "Itch.io",
-        studio: "Tim Garde",
-        desc: "Alone at home, a child turns isolation into a playground of imagination.",
-        details: "A 2D atmospheric puzzle game centered on imaginative environmental interactions, scene flow, and tactile puzzle mechanics built in Unity.",
-        tags: ["Unity 2D", "Puzzle Systems", "Interactive Objects"],
+        studio: "Gameseed 2026 · Tim Garde",
+        award: null,
+        desc: "2D top-down puzzle game featuring a Dual-World dimension-switching mechanic.",
+        details: "Developed for Gameseed 2026 — a 2D top-down puzzle game in Unity (C#) featuring a Dual-World dimension-switching mechanic. Responsible for core gameplay programming, enemy AI (FSM), 2D physics optimization, Fungus dialogue integration, Singleton-based audio architecture, and WebGL deployment.",
+        tags: ["Dual-World Mechanic", "FSM Enemy AI", "Fungus Dialogue", "WebGL"],
         image: "img/dreamify.png",
         link: "https://timgarde.itch.io/dreamify",
         featured: true,
@@ -27,8 +45,9 @@ const projects = [
         category: "Platformer",
         role: "Game Programmer",
         platform: "Global Game Jam 2026",
-        studio: "GGJ 2026 Entry",
-        desc: "Use magical masks with unique abilities to solve challenges.",
+        studio: "Global Game Jam 2026",
+        award: null,
+        desc: "Use magical masks with unique abilities to solve 3D platforming challenges.",
         details: "Built for Global Game Jam 2026 — a 3D platformer where switching between magical masks unlocks distinct traversal and puzzle-solving abilities.",
         tags: ["Unity 3D", "Ability Switching", "Global Game Jam"],
         image: "img/TheUnworn.png",
@@ -43,28 +62,13 @@ const projects = [
         category: "Action & Combat",
         role: "Game Developer",
         platform: "Itch.io",
-        studio: "Geniuscion Studio",
-        desc: "Survive enemy waves, level up, and defeat bosses.",
-        details: "Fast-paced 2D bullet-heaven survival game featuring wave spawning, combat progression, upgrade loops, and multi-phase boss encounters.",
-        tags: ["Wave Spawner", "Combat Loop", "Boss Encounters"],
+        studio: "Intsys Lab · Udinus Internship",
+        award: null,
+        desc: "2D musou hack-and-slash survival game — strategically select spells, survive enemy waves, and defeat bosses.",
+        details: "Internship project at Intsys Lab, Universitas Dian Nuswantoro. Developed a 2D musou hack-and-slash survival game where players strategically pick spells to survive escalating waves and achieve high scores. Built core gameplay mechanics, enemy AI, wave spawning systems, UI/UX, and itch.io asset integration.",
+        tags: ["Musou Survival", "Wave Spawner", "Enemy AI", "Spell Progression"],
         image: "img/BladeNSpel.png",
         link: "https://geniuscion-studio.itch.io/bladenspell",
-        featured: true,
-        squareFit: false
-    },
-    {
-        id: "natureration",
-        title: "Natureration",
-        genre: "Narrative 2D",
-        category: "Arcade & Narrative",
-        role: "Gameplay Programmer",
-        platform: "Itch.io",
-        studio: "Solo / Indie",
-        desc: "Review reports and resolve conflicts as a government official.",
-        details: "A narrative decision-making simulator where players evaluate incoming reports, balance competing priorities, and navigate systemic consequences.",
-        tags: ["Decision System", "UI Flow", "Narrative 2D"],
-        image: "img/natureration.png",
-        link: "https://hikariyafi35.itch.io/government-simulator",
         featured: false,
         squareFit: false
     },
@@ -75,10 +79,11 @@ const projects = [
         category: "Action & Combat",
         role: "Game Programmer",
         platform: "Itch.io",
-        studio: "Limitless Forge Studio",
-        desc: "Battle through enemies to save family and restore peace.",
-        details: "Action-driven combat experience featuring responsive player attacks, enemy behavior routines, and encounter pacing.",
-        tags: ["Action Combat", "Enemy AI", "Unity"],
+        studio: "MSIB Celerates Capstone",
+        award: null,
+        desc: "Action combat game featuring melee & ranged attacks, enemy AI, and parallax environments.",
+        details: "Final Capstone Project for Studi Independen at PT Mitra Talenta Group (Celerates). Developed core gameplay systems including player movement, melee and ranged combat, health management, enemy AI, sprite and parallax background integration, and full scene transitions across menus, options, gameplay, and credits.",
+        tags: ["Melee & Ranged Combat", "Enemy AI", "Parallax 2D", "Scene Flow"],
         image: "img/Echoes Of Vengeance.png",
         link: "https://limitless-forge-studio.itch.io/echoes-of-vengeance-the-shadow-reckoning",
         featured: false,
@@ -91,28 +96,13 @@ const projects = [
         category: "Puzzle",
         role: "Game Programmer",
         platform: "Itch.io",
-        studio: "Oraple Studio",
-        desc: "Solve physics puzzles using one magical projectile.",
-        details: "Physics-based puzzle strategy title built around trajectory planning, rebounding interactions, and deterministic projectile mechanics.",
-        tags: ["Rigidbody Physics", "Projectile Logic", "Strategy"],
+        studio: "Selasar Gamejam · Oraple Studio",
+        award: null,
+        desc: "One-shot physics puzzle strategy — eliminate every enemy in a level using a single magical projectile.",
+        details: "Built for Selasar Gamejam. Designed around a one-shot gameplay mechanic where players have only one bullet to clear each level, enhanced by strategic power-ups including Clone, Upsize, and Magnet to create varied tactical solutions.",
+        tags: ["One-Shot Physics", "Clone / Upsize / Magnet", "Puzzle Strategy"],
         image: "img/MortemRegia.png",
         link: "https://oraple-studio.itch.io/mortem-regia",
-        featured: false,
-        squareFit: false
-    },
-    {
-        id: "bob-the-knight",
-        title: "Bob The Knight",
-        genre: "Turn-Based",
-        category: "Action & Combat",
-        role: "Game Programmer",
-        platform: "Itch.io",
-        studio: "Solo Build",
-        desc: "2D turn-based game with simple dialog.",
-        details: "A compact 2D turn-based RPG prototype pairing state-driven combat turns with lightweight dialog sequencing.",
-        tags: ["Turn-Based FSM", "Dialog System", "Unity 2D"],
-        image: "img/bob.png",
-        link: "https://hikariyafi35.itch.io/bob-the-knight",
         featured: false,
         squareFit: false
     },
@@ -124,11 +114,29 @@ const projects = [
         role: "Game Programmer",
         platform: "Itch.io",
         studio: "Agate AI Course",
-        desc: "Thriller puzzle game created during Agate course.",
-        details: "A tense thriller puzzle project built during the Agate AI Game Programming Course, incorporating FSM enemy AI, scene management, and audio/VFX polish.",
-        tags: ["FSM Enemy AI", "Agate Course", "Thriller Puzzle"],
+        award: null,
+        desc: "Thriller puzzle game where players find keys and collect energy buffs to outplay FSM & NavMesh enemies.",
+        details: "Developed during the Agate AI Game Programming Course. Players search for keys to escape while collecting energy buffs to defeat patrolling threats — powered by Finite State Machine (FSM) enemy AI and Unity NavMesh pathfinding.",
+        tags: ["FSM Enemy AI", "NavMesh Navigation", "Energy Buffs"],
         image: "img/EscapeWarehouseEdition.jpg",
         link: "https://geniuscion-studio.itch.io/escape",
+        featured: false,
+        squareFit: false
+    },
+    {
+        id: "bob-the-knight",
+        title: "Bob The Knight",
+        genre: "Turn-Based",
+        category: "Action & Combat",
+        role: "Game Programmer",
+        platform: "Itch.io",
+        studio: "Solo Prototype",
+        award: null,
+        desc: "2D turn-based RPG prototype with state-driven combat, world exploration, and keyboard UI navigation.",
+        details: "Developed a 2D turn-based RPG prototype in Unity and C#. Implemented a state machine-based battle system, enemy AI, world map exploration, scene transitions, NPC movement, and full keyboard navigation using Unity's Event System.",
+        tags: ["Turn-Based FSM", "World Exploration", "Unity Event System"],
+        image: "img/bob.png",
+        link: "https://hikariyafi35.itch.io/bob-the-knight",
         featured: false,
         squareFit: false
     },
@@ -139,10 +147,11 @@ const projects = [
         category: "Puzzle",
         role: "Game Programmer",
         platform: "Itch.io",
-        studio: "Oraple Studio",
-        desc: "Help Mermei find her way home.",
-        details: "Deep-sea atmospheric puzzle journey guiding Mermei through subterranean hazards and environmental challenges.",
-        tags: ["Puzzle Design", "Level Flow", "Unity"],
+        studio: "Compfest 2024 · Oraple Studio",
+        award: null,
+        desc: "Underwater puzzle-thriller combining 2D and 3D artist-crafted assets in Unity.",
+        details: "Built for Compfest 2024. Developed an underwater-themed puzzle-thriller in Unity, integrating custom 2D and 3D assets created by the game artist team seamlessly into gameplay interactions and level flow.",
+        tags: ["2D/3D Hybrid", "Puzzle-Thriller", "Compfest 2024"],
         image: "img/luminara.png",
         link: "https://oraple-studio.itch.io/luminara-trench",
         featured: false,
@@ -156,8 +165,8 @@ const projects = [
         role: "Game Programmer",
         platform: "Itch.io",
         studio: "Oraple Studio",
-        desc: "Help Budi catch the last train home.",
-        details: "Snappy arcade rush where quick timing and obstacle navigation decide whether Budi catches the last commuter train.",
+        desc: "Help Budi catch the last train home in a snappy arcade rush.",
+        details: "Fast-paced arcade runner where split-second timing and obstacle navigation decide whether Budi catches the last commuter train.",
         tags: ["Arcade Loop", "Timing Mechanics", "Unity"],
         image: "img/afterwirk.jpg",
         link: "https://oraple-studio.itch.io/afterwork",
@@ -216,32 +225,46 @@ const projects = [
 
 const experiences = [
     {
+        id: "lentera-nusantara",
+        period: "Present",
+        type: "Current Role",
+        role: "Game Programmer",
+        org: "Lentera Nusantara",
+        summary: "Currently contributing as a Game Programmer at Lentera Nusantara — engineering core gameplay systems, interactive mechanics, and responsive player experiences in Unity & C#.",
+        highlights: [
+            "Developing and maintaining modular gameplay systems and feature pipelines in Unity & C#.",
+            "Collaborating closely with designers, artists, and engineers to ship polished interactive builds.",
+            "Applying structured gameplay architecture, AI behaviors, and optimization best practices in studio production."
+        ],
+        tags: ["Unity", "C#", "Gameplay Systems", "Studio Production"]
+    },
+    {
         id: "nouverior",
         period: "Jan 2026 – Apr 2026",
         type: "Internship",
         role: "Game Programmer Intern",
         org: "Nouverior",
-        summary: "Worked directly on core gameplay systems and audio synchronization within a collaborative production pipeline.",
+        summary: "Contributed to core character mechanics, active skill systems, enemy AI behaviors, and synchronized FMOD audio integration.",
         highlights: [
-            "Implemented and refined responsive character movement systems.",
-            "Built modular skill selection mechanics for player customization.",
-            "Developed enemy AI behavior routines for dynamic combat pacing.",
-            "Integrated FMOD middleware for synchronized, event-driven gameplay sound effects."
+            "Contributed to character movement mechanics using Unity and C# for smooth, responsive controls.",
+            "Implemented a skill selection system allowing players to trigger and switch abilities during gameplay.",
+            "Assisted in developing enemy AI including state behaviors and combat reactions.",
+            "Integrated audio using FMOD with sound events synchronized directly to gameplay actions."
         ],
-        tags: ["Unity", "C#", "Character Movement", "Enemy AI", "FMOD"]
+        tags: ["Unity", "C#", "Skill Selection", "Enemy AI", "FMOD"]
     },
     {
         id: "google-unity",
         period: "Jul 2025 – Dec 2025",
-        type: "Industry Program",
+        type: "Industry Training Program",
         role: "Unity Game Developer Trainee",
         org: "Google Play × Unity Program",
-        summary: "End-to-end game production training spanning desktop prototyping, visual polish, and mobile deployment.",
+        summary: "Comprehensive game development program spanning concept prototyping, NPC AI, lighting/VFX polish, and mobile porting.",
         highlights: [
-            "Designed and developed complete Unity game projects while managing assets and team workflows.",
-            "Integrated character animations, gameplay scripts, and scene lighting setups.",
-            "Created enemy NPC AI behaviors and custom particle VFX systems.",
-            "Ported desktop builds cleanly to Android for mobile playability."
+            "Designed and developed game concepts and complete gameplay systems.",
+            "Managed project workflows, game assets, animations, scripts, and scene lighting.",
+            "Developed AI behaviors for NPC enemies and implemented particle-based visual effects (VFX).",
+            "Ported desktop Unity builds cleanly to Android."
         ],
         tags: ["Unity", "NPC AI", "Particle VFX", "Lighting", "Android Porting"]
     },
@@ -250,42 +273,246 @@ const experiences = [
         period: "Mar 2025 – Apr 2025",
         type: "Specialized Course",
         role: "AI Game Programming Course",
-        org: "Agate",
-        summary: "Intensive program centered on gameplay architecture and Finite State Machine (FSM) enemy AI design.",
+        org: "Agate Academy (Batch 7)",
+        summary: "Focused game AI course mastering Finite State Machines, NavMesh navigation, combat mechanics, and gameplay polish.",
         highlights: [
-            "Architected gameplay systems and enemy AI state transitions using FSM patterns.",
-            "Implemented score tracking systems and clean multi-scene management.",
-            "Edited 2D pixel assets in Aseprite and polished gameplay feel with audio and VFX."
+            "Developed gameplay mechanics including character movement, melee & ranged combat, and buff systems.",
+            "Implemented enemy AI using the Finite State Machine (FSM) pattern and NavMesh navigation.",
+            "Built a leaderboard system with save functionality and structured scene management.",
+            "Edited pixel assets in Aseprite and integrated synchronized audio and VFX."
         ],
-        tags: ["FSM AI", "Scene Management", "Aseprite", "Audio & VFX"]
+        tags: ["FSM AI", "NavMesh", "Save & Leaderboard", "Aseprite", "VFX"]
     },
     {
         id: "intsys",
         period: "Sep 2024 – Dec 2024",
         type: "Lab Internship",
         role: "Gameplay Programmer Intern",
-        org: "Intsys Lab - Udinus",
-        summary: "Built core combat, progression, and competitive systems inside the university's Intelligent Systems Lab.",
+        org: "Intsys Lab — Universitas Dian Nuswantoro",
+        summary: "Built combat, progression, and AI systems for lab game projects including the musou survival title BladeNSpell.",
         highlights: [
-            "Developed player movement, combat actions, and modular buff systems.",
-            "Built FSM-driven enemy AI behaviors for varied encounter loops.",
-            "Implemented leaderboard tracking alongside VFX and audio integration."
+            "Developed character movement, melee and ranged combat, and modular buff systems.",
+            "Implemented enemy AI behaviors using the Finite State Machine (FSM) approach.",
+            "Built a leaderboard and save system with multi-scene management.",
+            "Edited game assets using Aseprite and integrated audio and visual effects (VFX)."
         ],
-        tags: ["Combat Systems", "Buff Architecture", "FSM AI", "Leaderboards"]
+        tags: ["Combat Systems", "FSM AI", "Save System", "BladeNSpell"]
     },
     {
         id: "celerates",
         period: "Feb 2024 – Jun 2024",
-        type: "Bootcamp / Training",
-        role: "Game Development Trainee",
-        org: "Celerates",
-        summary: "Foundational game development program covering full-cycle Unity & C# production through a final capstone build.",
+        type: "MSIB Batch 6 · Grade A (85.41)",
+        role: "Studi Independen — Game Design & Development",
+        org: "Celerates (PT Mitra Talenta Grup)",
+        summary: "Kampus Merdeka Studi Independen acceleration program covering full-cycle Unity game development, monetization, playtesting, and capstone delivery.",
         highlights: [
-            "Mastered game design fundamentals and core Unity & C# scripting patterns.",
-            "Handled asset integration, gameplay UI/UX layout, and sound design.",
-            "Collaborated to build and deliver a playable final game project."
+            "Studied game design fundamentals, GDD authoring, and game development principles.",
+            "Developed games using Unity & C#, managing and integrating assets, UI/UX, and game audio.",
+            "Conducted playtesting sessions, Agile (Scrum) project management, and monetization strategy.",
+            "Delivered Echoes Of Vengeance as the final capstone build with an overall average grade of 85.41 (A)."
         ],
-        tags: ["Unity", "C#", "Game Design", "UI/UX", "Sound Design"]
+        tags: ["Unity", "C#", "GDD", "UI/UX & Audio", "Scrum", "Capstone"]
+    },
+    {
+        id: "udemy-3d",
+        period: "2023",
+        type: "Certification Course",
+        role: "Complete C# Unity Game Developer 3D",
+        org: "Udemy",
+        summary: "Hands-on 3D Unity & C# curriculum building multiple mini-game projects from core scripting to post-processing.",
+        highlights: [
+            "Mastered core C# concepts including variables, methods, conditionals, and serialization.",
+            "Implemented player movement, input systems, Rigidbody physics, and collision detection.",
+            "Applied Cinemachine camera systems, lighting, post-processing, prefabs, particles, audio, and UI.",
+            "Developed several playable mini-game projects to solidify fundamentals."
+        ],
+        tags: ["Unity 3D", "C#", "Rigidbody Physics", "Cinemachine", "Post-Processing"]
+    },
+    {
+        id: "dncc-btng",
+        period: "Sep 2023 – Oct 2023",
+        type: "Bootcamp",
+        role: "BTNG Bootcamp Game Developer",
+        org: "DNCC — Universitas Dian Nuswantoro",
+        summary: "Basic Training for Next Generation (Game Division) introducing C# scripting and Unity fundamentals.",
+        highlights: [
+            "Learned C# programming fundamentals tailored for game scripting.",
+            "Developed foundational Unity game prototypes.",
+            "Implemented scene management workflows in Unity."
+        ],
+        tags: ["C# Fundamentals", "Unity", "Scene Management"]
+    }
+];
+
+const certificates = [
+    {
+        id: "unity-certified-associate",
+        title: "Unity Certified Associate: Game Developer",
+        issuer: "Unity Technologies",
+        category: "Game Dev & Unity",
+        date: "Oct 2025 – Oct 2028",
+        badge: "FLAGSHIP CERT",
+        flagship: true,
+        credentialId: "bc3d48a275754ee3b4990d7068417b50",
+        note: "Official industry certification from Unity Technologies validating professional proficiency in Unity game development, C# programming, asset pipelines, and gameplay systems.",
+        image: "img/certs/unity-certified-associate.png",
+        pdf: "certs/unity-certified-associate.pdf",
+        verifyUrl: "https://cp.certmetrics.com/Unity/en/public/verify/credential"
+    },
+    {
+        id: "icw-sayembara-2026",
+        title: "2nd Place — Sayembara Game Competition (End Climate Corruption)",
+        issuer: "Indonesia Corruption Watch (ICW)",
+        category: "Awards & Events",
+        date: "2026",
+        badge: "2ND PLACE AWARD",
+        flagship: true,
+        credentialId: "Winning Title: Natureration",
+        note: "Awarded 2nd Place in the national Games Against #ClimateCorruption development competition with Natureration — a 2D narrative game tackling climate corruption in Indonesia.",
+        image: "img/certs/icw-sayembara-2026.jpg",
+        pdf: null,
+        verifyUrl: "https://hikariyafi35.itch.io/government-simulator"
+    },
+    {
+        id: "agate-ai-2025",
+        title: "AI Game Programming — Agate Game Course Batch 7",
+        issuer: "Agate Academy",
+        category: "Game Dev & Unity",
+        date: "Feb – Mar 2025",
+        badge: "GAME AI",
+        flagship: false,
+        credentialId: "118/APR/ACM.00/IV/2025",
+        note: "Completed specialized training in Finite State Machine (FSM) enemy AI, NavMesh pathfinding, gameplay systems, and polish at Agate Academy.",
+        image: "img/certs/agate-ai-game-programming.png",
+        pdf: "certs/agate-ai-game-programming.pdf",
+        verifyUrl: null
+    },
+    {
+        id: "gameseed-2025",
+        title: "Gameseed 2025 Participant Certificate",
+        issuer: "EKRAF × Asosiasi Game Indonesia (AGI)",
+        category: "Awards & Events",
+        date: "2025",
+        badge: "NATIONAL EVENT",
+        flagship: false,
+        credentialId: "Sponsored by Tencent, Nuon & Google",
+        note: "Official recognition from Kementerian Ekonomi Kreatif (EKRAF) and Asosiasi Game Indonesia (AGI) for participating in Gameseed 2025.",
+        image: "img/certs/gameseed-2025.jpg",
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "celerates-msib-2024",
+        title: "MSIB Batch 6 — Game Design & Development (Grade A · 85.41)",
+        issuer: "Celerates · PT Mitra Talenta Grup (Kampus Merdeka)",
+        category: "Game Dev & Unity",
+        date: "Feb – Jun 2024",
+        badge: "GRADE A · 85.41",
+        flagship: false,
+        credentialId: "ID Kegiatan: 8429543",
+        note: "Completed Kampus Merdeka Studi Independen covering Game Theory (94), Coding Foundation (90.5), Advanced Mechanics & Monetization (100), and Capstone production.",
+        image: "img/certs/celerates-msib-transcript.png",
+        pdf: "certs/celerates-msib-transcript.pdf",
+        secondaryPdf: "certs/celerates-completion.pdf",
+        verifyUrl: null
+    },
+    {
+        id: "dncc-btng-2023",
+        title: "Basic Training for Next Generation (BTNG) — Game Division",
+        issuer: "DNCC · Universitas Dian Nuswantoro",
+        category: "Game Dev & Unity",
+        date: "Sep – Oct 2023",
+        badge: "BOOTCAMP",
+        flagship: false,
+        credentialId: "Divisi Game · Time to Level Up!",
+        note: "Completed intensive introductory training in C# fundamentals, Unity workflows, and scene management with Dian Nuswantoro Computer Club.",
+        image: "img/certs/dncc-btng-2023.jpg",
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "cflt-english-2025",
+        title: "English Proficiency Assessment — Score 473",
+        issuer: "CFLT · Universitas Dian Nuswantoro",
+        category: "Language",
+        date: "Jan 2025 – Jan 2027",
+        badge: "SCORE 473",
+        flagship: false,
+        credentialId: "CFLT-20250114-OL00459",
+        note: "Certified English Proficiency Assessment by Center for Foreign Language Training Udinus (Listening 47 · Structure & Written Expression 49 · Reading 46).",
+        image: "img/certs/cflt-english-udinus.png",
+        pdf: "certs/cflt-english-udinus.pdf",
+        verifyUrl: null
+    },
+    {
+        id: "udemy-unity-3d",
+        title: "Complete C# Unity Game Developer 3D",
+        issuer: "Udemy",
+        category: "Game Dev & Unity",
+        date: "2023",
+        badge: "COURSE",
+        flagship: false,
+        credentialId: "CV Credential",
+        note: "End-to-end 3D Unity course covering C# scripting, Rigidbody physics, Cinemachine cameras, lighting, post-processing, and multiple playable 3D projects.",
+        image: null,
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "dicoding-web",
+        title: "Belajar Dasar Pemrograman Web",
+        issuer: "Dicoding Indonesia",
+        category: "Web & Cloud",
+        date: "Verified on CV",
+        badge: "WEB DEV",
+        flagship: false,
+        credentialId: "Dicoding Credential",
+        note: "Core semantic HTML, CSS layout systems, and responsive web fundamentals.",
+        image: null,
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "dicoding-js",
+        title: "Belajar Dasar Pemrograman JavaScript",
+        issuer: "Dicoding Indonesia",
+        category: "Web & Cloud",
+        date: "Verified on CV",
+        badge: "JAVASCRIPT",
+        flagship: false,
+        credentialId: "Dicoding Credential",
+        note: "Modern JavaScript programming fundamentals, asynchronous logic, OOP, and functional patterns.",
+        image: null,
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "dicoding-backend",
+        title: "Belajar Membuat Aplikasi Back-End untuk Pemula",
+        issuer: "Dicoding Indonesia",
+        category: "Web & Cloud",
+        date: "Verified on CV",
+        badge: "BACK-END",
+        flagship: false,
+        credentialId: "Dicoding Credential",
+        note: "RESTful API architecture, Node.js server development, routing, and deployment basics.",
+        image: null,
+        pdf: null,
+        verifyUrl: null
+    },
+    {
+        id: "dicoding-aws",
+        title: "Cloud Practitioner Essentials (Belajar Dasar AWS Cloud)",
+        issuer: "Dicoding Indonesia",
+        category: "Web & Cloud",
+        date: "Verified on CV",
+        badge: "AWS CLOUD",
+        flagship: false,
+        credentialId: "Dicoding Credential",
+        note: "Foundational cloud architecture, security, pricing, and core AWS infrastructure services.",
+        image: null,
+        pdf: null,
+        verifyUrl: null
     }
 ];
 
@@ -298,13 +525,16 @@ const state = {
     viewMode: "grid",
     spotlightIndex: 0,
     activeExpId: experiences[0].id,
+    activeCertCategory: "All",
     modalOpen: false,
+    modalMode: "project", // "project" | "certificate"
     modalList: projects,
     modalIndex: 0
 };
 
 const featuredProjects = projects.filter((p) => p.featured);
 const categories = ["All", "Puzzle", "Action & Combat", "Platformer", "Arcade & Narrative"];
+const certCategories = ["All", "Game Dev & Unity", "Awards & Events", "Web & Cloud", "Language"];
 
 /* --------------------------------------------------------------------------
    DOM REFERENCES
@@ -319,6 +549,10 @@ const projectGridEl = document.getElementById("project-grid");
 
 const expListEl = document.getElementById("exp-list");
 const expDetailEl = document.getElementById("exp-detail");
+
+const certFilterGroupEl = document.getElementById("cert-filter-group");
+const certCountEl = document.getElementById("cert-count");
+const certGridEl = document.getElementById("cert-grid");
 
 const modalEl = document.getElementById("project-modal");
 const modalPanelEl = modalEl.querySelector(".modal-panel");
@@ -359,13 +593,20 @@ function getFilteredProjects() {
             project.category,
             project.role,
             project.desc,
+            project.details,
             project.studio,
+            project.award || "",
             ...project.tags
         ]
             .join(" ")
             .toLowerCase();
         return haystack.includes(q);
     });
+}
+
+function getFilteredCertificates() {
+    if (state.activeCertCategory === "All") return certificates;
+    return certificates.filter((c) => c.category === state.activeCertCategory);
 }
 
 /* --------------------------------------------------------------------------
@@ -375,6 +616,7 @@ function renderSpotlightTabs() {
     spotlightTabsEl.innerHTML = featuredProjects
         .map((project, idx) => {
             const isActive = idx === state.spotlightIndex;
+            const eyebrow = project.award ? `★ 2ND PLACE // 0${idx + 1}` : `FEATURED // 0${idx + 1}`;
             return `
                 <button
                     type="button"
@@ -384,7 +626,7 @@ function renderSpotlightTabs() {
                     data-spotlight="${idx}"
                 >
                     <span class="tab-left">
-                        <span class="tab-num">FEATURED // 0${idx + 1}</span>
+                        <span class="tab-num">${eyebrow}</span>
                         <span class="tab-title">${project.title}</span>
                     </span>
                     <span class="tab-genre">${project.genre}</span>
@@ -404,11 +646,14 @@ function renderSpotlightTabs() {
 function renderSpotlightStage() {
     const project = featuredProjects[state.spotlightIndex];
     const projectGlobalIndex = projects.findIndex((p) => p.id === project.id);
+    const badgeText = project.award
+        ? `🏆 ${project.award}`
+        : `★ Spotlight · ${project.studio}`;
 
     spotlightStageEl.innerHTML = `
         <div class="spotlight-media ${project.squareFit ? "square-fit" : ""}">
             ${project.squareFit ? `<div class="spotlight-media-bg" style="background-image:url('${encodeURI(project.image)}')"></div>` : ""}
-            <span class="spotlight-badge">★ Spotlight · ${project.platform}</span>
+            <span class="spotlight-badge">${badgeText}</span>
             <img src="${project.image}" alt="${project.title} game cover" />
         </div>
         <div class="spotlight-info">
@@ -440,7 +685,7 @@ function renderSpotlightStage() {
     `;
 
     document.getElementById("spotlight-inspect-btn").addEventListener("click", () => {
-        openModal(projects, projectGlobalIndex);
+        openModal("project", projects, projectGlobalIndex);
     });
 }
 
@@ -506,7 +751,7 @@ function renderProjects() {
             const delay = Math.min(listIdx * 35, 280);
             return `
                 <article
-                    class="project-card"
+                    class="project-card ${project.award ? "is-award" : ""}"
                     data-list-idx="${listIdx}"
                     tabindex="0"
                     role="button"
@@ -517,6 +762,7 @@ function renderProjects() {
                         <img src="${project.image}" alt="${project.title}" loading="lazy" />
                         <span class="card-index">#${padIndex(globalIdx)}</span>
                         <span class="card-genre">${project.genre}</span>
+                        ${project.award ? `<span class="card-award-ribbon">🏆 2nd Place ICW</span>` : ""}
                         <span class="card-hover-hint">Inspect ↗</span>
                     </div>
 
@@ -554,7 +800,7 @@ function renderProjects() {
 
     projectGridEl.querySelectorAll(".project-card").forEach((card) => {
         const listIdx = Number(card.dataset.listIdx);
-        const openCurrent = () => openModal(filtered, listIdx);
+        const openCurrent = () => openModal("project", filtered, listIdx);
 
         card.addEventListener("click", (e) => {
             if (e.target.closest(".card-play-link")) return;
@@ -572,19 +818,128 @@ function renderProjects() {
 }
 
 /* --------------------------------------------------------------------------
-   PROJECT INSPECTOR MODAL
+   CERTIFICATES & AWARDS SECTION
    -------------------------------------------------------------------------- */
-function renderModalContent() {
-    const project = state.modalList[state.modalIndex];
-    const globalIdx = projects.findIndex((p) => p.id === project.id);
+function renderCertFilters() {
+    certFilterGroupEl.innerHTML = certCategories
+        .map((cat) => {
+            const count =
+                cat === "All"
+                    ? certificates.length
+                    : certificates.filter((c) => c.category === cat).length;
+            const active = state.activeCertCategory === cat;
+            return `
+                <button type="button" class="filter-btn ${active ? "active" : ""}" data-cert-cat="${cat}">
+                    <span>${cat}</span>
+                    <span class="filter-count">${count}</span>
+                </button>
+            `;
+        })
+        .join("");
 
-    modalIndexEl.textContent = `INSPECTOR // #${padIndex(globalIdx)} (${state.modalIndex + 1} of ${state.modalList.length})`;
+    certFilterGroupEl.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state.activeCertCategory = btn.dataset.certCat;
+            renderCertFilters();
+            renderCertificates();
+        });
+    });
+}
+
+function renderCertificates() {
+    const filtered = getFilteredCertificates();
+    const previewable = filtered.filter((c) => c.image);
+    certCountEl.textContent = `${filtered.length} of ${certificates.length} credentials`;
+
+    certGridEl.innerHTML = filtered
+        .map((cert, idx) => {
+            const delay = Math.min(idx * 35, 260);
+            const hasPreview = Boolean(cert.image);
+            const previewIdx = previewable.findIndex((c) => c.id === cert.id);
+            return `
+                <article
+                    class="cert-card ${hasPreview ? "has-preview" : ""} ${cert.flagship ? "featured-cert" : ""}"
+                    ${hasPreview ? `data-cert-preview-idx="${previewIdx}" tabindex="0" role="button" aria-label="View certificate: ${cert.title}"` : ""}
+                    style="animation-delay: ${delay}ms"
+                >
+                    ${
+                        hasPreview
+                            ? `
+                        <div class="cert-thumb">
+                            <img src="${cert.image}" alt="${cert.title}" loading="lazy" />
+                            <span class="cert-thumb-badge ${cert.flagship ? "flagship" : ""}">${cert.badge}</span>
+                            <span class="card-hover-hint">View Scan ↗</span>
+                        </div>
+                    `
+                            : ""
+                    }
+                    <div class="cert-card-body">
+                        <div class="cert-meta-row">
+                            <span class="cert-cat">${cert.category}</span>
+                            <span>${cert.date}</span>
+                        </div>
+                        <h3>${cert.title}</h3>
+                        <div class="cert-issuer">${cert.issuer}</div>
+                        <p class="cert-note">${cert.note}</p>
+                        <div class="cert-card-footer">
+                            <span class="cert-id-chip" title="${escapeHtml(cert.credentialId)}">${cert.credentialId}</span>
+                            <div class="cert-actions-inline">
+                                ${
+                                    cert.verifyUrl
+                                        ? `<a href="${cert.verifyUrl}" target="_blank" rel="noopener noreferrer" class="cert-mini-btn">Verify ↗</a>`
+                                        : ""
+                                }
+                                ${
+                                    cert.pdf
+                                        ? `<a href="${cert.pdf}" target="_blank" rel="noopener noreferrer" class="cert-mini-btn">PDF ↗</a>`
+                                        : ""
+                                }
+                                ${
+                                    hasPreview && !cert.pdf && !cert.verifyUrl
+                                        ? `<span class="cert-mini-btn">Inspect</span>`
+                                        : ""
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        })
+        .join("");
+
+    certGridEl.querySelectorAll(".cert-card.has-preview").forEach((card) => {
+        const previewIdx = Number(card.dataset.certPreviewIdx);
+        const openCert = () => openModal("certificate", previewable, previewIdx);
+
+        card.addEventListener("click", (e) => {
+            if (e.target.closest("a")) return;
+            openCert();
+        });
+
+        card.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                if (e.target.closest("a")) return;
+                e.preventDefault();
+                openCert();
+            }
+        });
+    });
+}
+
+/* --------------------------------------------------------------------------
+   SHARED INSPECTOR MODAL (PROJECTS + CERTIFICATES)
+   -------------------------------------------------------------------------- */
+function renderProjectModal(project) {
+    const globalIdx = projects.findIndex((p) => p.id === project.id);
+    modalIndexEl.textContent = `PROJECT // #${padIndex(globalIdx)} (${state.modalIndex + 1} of ${state.modalList.length})`;
 
     modalBodyEl.innerHTML = `
         <div class="modal-hero-media ${project.squareFit ? "square-fit" : ""}">
             ${project.squareFit ? `<div class="modal-hero-media-bg" style="background-image:url('${encodeURI(project.image)}')"></div>` : ""}
             <img src="${project.image}" alt="${project.title} preview" />
         </div>
+
+        ${project.award ? `<div class="award-pill">🏆 ${project.award}</div>` : ""}
 
         <div class="modal-header-row">
             <div>
@@ -605,11 +960,11 @@ function renderModalContent() {
                 <strong>${project.role}</strong>
             </div>
             <div class="modal-spec-box">
-                <span>Release / Origin</span>
+                <span>Event / Studio</span>
                 <strong>${project.studio}</strong>
             </div>
             <div class="modal-spec-box">
-                <span>Core Focus</span>
+                <span>Core System</span>
                 <strong>${project.tags[0]}</strong>
             </div>
         </div>
@@ -626,14 +981,91 @@ function renderModalContent() {
             </a>
         </div>
     `;
+}
+
+function renderCertificateModal(cert) {
+    modalIndexEl.textContent = `CREDENTIAL // ${String(state.modalIndex + 1).padStart(2, "0")} OF ${String(state.modalList.length).padStart(2, "0")}`;
+
+    modalBodyEl.innerHTML = `
+        <div class="modal-cert-media">
+            <img src="${cert.image}" alt="${cert.title}" />
+        </div>
+
+        <div class="modal-header-row">
+            <div>
+                <h2 id="modal-title">${cert.title}</h2>
+                <div class="modal-badges">
+                    <span class="modal-badge accent">${cert.badge}</span>
+                    <span class="modal-badge">${cert.category}</span>
+                    <span class="modal-badge">${cert.date}</span>
+                </div>
+            </div>
+        </div>
+
+        <p class="modal-desc">${cert.note}</p>
+
+        <div class="modal-specs">
+            <div class="modal-spec-box">
+                <span>Issued By</span>
+                <strong>${cert.issuer}</strong>
+            </div>
+            <div class="modal-spec-box">
+                <span>Period / Validity</span>
+                <strong>${cert.date}</strong>
+            </div>
+            <div class="modal-spec-box">
+                <span>Credential ID / Info</span>
+                <strong style="word-break: break-all;">${cert.credentialId}</strong>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <span class="modal-kbd-hint">Navigate: <kbd>←</kbd> <kbd>→</kbd> · Close: <kbd>Esc</kbd></span>
+            <div class="modal-footer-actions">
+                ${
+                    cert.verifyUrl
+                        ? `<a href="${cert.verifyUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <span>Verify Credential</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                           </a>`
+                        : ""
+                }
+                ${
+                    cert.pdf
+                        ? `<a href="${cert.pdf}" target="_blank" rel="noopener noreferrer" class="btn ${cert.verifyUrl ? "btn-secondary" : "btn-primary"}">
+                            <span>Open Full PDF</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+                           </a>`
+                        : ""
+                }
+                ${
+                    cert.secondaryPdf
+                        ? `<a href="${cert.secondaryPdf}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+                            <span>Completion Cert PDF ↗</span>
+                           </a>`
+                        : ""
+                }
+            </div>
+        </div>
+    `;
+}
+
+function renderModalContent() {
+    const item = state.modalList[state.modalIndex];
+    if (state.modalMode === "certificate") {
+        renderCertificateModal(item);
+    } else {
+        renderProjectModal(item);
+    }
 
     const hasMultiple = state.modalList.length > 1;
     modalPrevBtn.disabled = !hasMultiple;
     modalNextBtn.disabled = !hasMultiple;
 }
 
-function openModal(list, index) {
+function openModal(mode, list, index) {
     lastFocusedBeforeModal = document.activeElement;
+    state.modalMode = mode;
     state.modalList = list;
     state.modalIndex = index;
     state.modalOpen = true;
@@ -889,3 +1321,5 @@ renderSpotlight();
 renderFilters();
 renderProjects();
 renderExperience();
+renderCertFilters();
+renderCertificates();
