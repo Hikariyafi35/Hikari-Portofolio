@@ -30,6 +30,31 @@ const projects = [
         squareFit: false
     },
     {
+        id: "card-medieval-endless-spire",
+        title: "Card Medieval: Endless Spire",
+        genre: "Roguelike Deckbuilder",
+        category: "Action & Combat",
+        role: "Game Programmer",
+        platform: "Itch.io",
+        studio: "Solo Build",
+        award: null,
+        desc: "A tactical medieval pixel-art roguelike deckbuilder. Draft cards, slay scaling monsters, survive endless floors!",
+        details: "A tactical medieval pixel-art roguelike deckbuilder built in Unity & C#. Draft cards between encounters, outplay scaling medieval monster waves, and climb as high as possible across endless spire floors.",
+        tags: ["Deckbuilder", "Roguelike Loop", "Scaling Waves", "WebGL"],
+        architecture: [
+            { label: "Card & Draft System", text: "Modular card drafting and tactical turn-based card execution system driving each combat encounter." },
+            { label: "Endless Spire Scaling", text: "Progressive floor-by-floor monster scaling with persistent best-floor record tracking across runs." },
+            { label: "Tactical Combat", text: "Pixel-art medieval enemy roster with turn resolution, status interplay, and wave escalation." },
+            { label: "WebGL Release", text: "Compiled and playable directly in-browser via Unity WebGL embed on Itch.io." }
+        ],
+        image: "img/card-medieval-endless-spire.png",
+        link: "https://hikariyafi35.itch.io/card-medieval-endless-spire",
+        itchEmbedId: "5464285",
+        itchPlayUrl: "https://itch.io/embed-upload/20891213?color=1E1613",
+        featured: true,
+        squareFit: false
+    },
+    {
         id: "dreamify",
         title: "Dreamify",
         genre: "Puzzle 2D",

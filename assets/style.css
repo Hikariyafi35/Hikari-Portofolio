@@ -1377,23 +1377,31 @@ button {
 
 .spotlight-tabs {
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     background: var(--bg-panel);
     border-bottom: 1px solid var(--border);
 }
 
 .spotlight-tab {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 5px;
-    padding: 14px 16px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 13px 16px;
     text-align: left;
     border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
     position: relative;
     min-width: 0;
     transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.spotlight-tab:nth-child(3n) {
+    border-right: none;
+}
+
+.spotlight-tab:nth-last-child(-n+3) {
+    border-bottom: none;
 }
 
 .spotlight-tab:last-child {
